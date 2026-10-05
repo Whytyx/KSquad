@@ -1,975 +1,217 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="th">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Gayle People — Practical HR Support for Hospitality and Growing Businesses</title>
-<meta name="description" content="HR, hiring and people compliance support for small and growing businesses. Contracts, policies, employee issues and ongoing HR support." />
+<title>เทียบ 2 สไตล์ — Gayle People UI comparison</title>
+<meta name="description" content="Compare two vivid colour UI variants of the Gayle People HR site." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root {
     --charcoal: #0F1115;
-    --charcoal-soft: #1A1D23;
     --cream: #F7F4EF;
     --cream-deep: #EFEBE3;
     --border: #E4DFD6;
-    --border-dark: #2A2E36;
     --muted: #6B6560;
-    --muted-on-dark: #A8A29A;
-    --ink: #1A1C1F;
-    --white: #FFFFFF;
-
-    /* Insight accents — sampled then deepened/muted for luxury */
-    --blue: #2E648C;      /* Cool Blue — HR Foundation */
-    --red: #9A3F42;       /* Fiery Red — People Problems */
-    --green: #5A7348;     /* Earth Green — Ongoing Support */
-    --gold: #B8892E;      /* Deep gold from Sunshine Yellow */
-
-    --blue-soft: rgba(46, 100, 140, 0.10);
-    --red-soft: rgba(154, 63, 66, 0.10);
-    --green-soft: rgba(90, 115, 72, 0.10);
-    --gold-soft: rgba(184, 137, 46, 0.12);
-
-    --serif: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --yellow: #F5C518;
+    --blue: #2B6CB0;
+    --red: #E23B3B;
+    --green: #3D8B4F;
+    --serif: "Cormorant Garamond", Georgia, serif;
     --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-
-    --shadow-sm: 0 1px 2px rgba(15, 17, 21, 0.04);
-    --shadow-md: 0 8px 28px rgba(15, 17, 21, 0.06);
-    --radius: 10px;
-    --max: 1120px;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
   body {
     font-family: var(--sans);
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.65;
-    color: var(--ink);
     background: var(--cream);
+    color: var(--charcoal);
+    min-height: 100vh;
     -webkit-font-smoothing: antialiased;
   }
-  img { max-width: 100%; display: block; }
   a { color: inherit; text-decoration: none; }
-  button, input, select, textarea { font: inherit; color: inherit; }
-  .wrap { width: min(100% - 48px, var(--max)); margin-inline: auto; }
-  .eyebrow {
+  .wrap { width: min(100% - 40px, 920px); margin-inline: auto; }
+
+  .stripe {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 10px;
+  }
+  .stripe span:nth-child(1) { background: var(--yellow); }
+  .stripe span:nth-child(2) { background: var(--blue); }
+  .stripe span:nth-child(3) { background: var(--red); }
+  .stripe span:nth-child(4) { background: var(--green); }
+
+  header {
+    padding: 56px 0 28px;
+    text-align: center;
+  }
+  header .eyebrow {
     font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  h1, h2, h3, h4 {
-    font-family: var(--serif);
-    font-weight: 500;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    color: var(--charcoal);
-  }
-  h1 { font-size: clamp(2.4rem, 4.2vw, 3.55rem); }
-  h2 { font-size: clamp(1.85rem, 3vw, 2.55rem); }
-  h3 { font-size: 1.35rem; }
-  p + p { margin-top: 0.9em; }
-  .lede { font-size: 1.08rem; color: var(--muted); max-width: 38rem; }
-
-
-
-  /* —— Nav —— */
-  .nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: rgba(247, 244, 239, 0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 18px 0;
-  }
-  .logo {
-    font-family: var(--serif);
-    font-size: 1.35rem;
     font-weight: 600;
-    letter-spacing: 0.01em;
-    color: var(--charcoal);
-  }
-  .logo span {
-    display: block;
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-top: 2px;
-  }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    list-style: none;
-  }
-  .nav-links a {
-    font-size: 13.5px;
-    font-weight: 450;
-    color: var(--muted);
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--charcoal); }
-  .nav-cta {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 18px;
-    background: var(--charcoal);
-    color: var(--cream) !important;
-    border-radius: 999px;
-    font-size: 13px !important;
-    font-weight: 500 !important;
-    letter-spacing: 0.02em;
-    transition: background 0.25s, transform 0.2s;
-  }
-  .nav-cta:hover { background: var(--blue); color: var(--cream) !important; }
-
-  /* —— Buttons —— */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 14px 26px;
-    border-radius: 999px;
-    border: 1px solid transparent;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    cursor: pointer;
-    transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.2s, box-shadow 0.25s;
-  }
-  .btn:hover { transform: translateY(-1px); }
-  .btn-primary {
-    background: var(--charcoal);
-    color: var(--cream);
-    box-shadow: var(--shadow-sm);
-  }
-  .btn-primary:hover { background: var(--blue); }
-  .btn-ghost {
-    background: transparent;
-    border-color: var(--border);
-    color: var(--charcoal);
-  }
-  .btn-ghost:hover {
-    border-color: var(--charcoal);
-    background: var(--white);
-  }
-  .btn-on-dark {
-    background: var(--cream);
-    color: var(--charcoal);
-  }
-  .btn-on-dark:hover { background: var(--white); box-shadow: var(--shadow-md); }
-  .btn-outline-light {
-    background: transparent;
-    border-color: rgba(247,244,239,0.28);
-    color: var(--cream);
-  }
-  .btn-outline-light:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-  }
-
-  /* —— Hero —— */
-  .hero {
-    padding: 88px 0 72px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0 auto auto 0;
-    width: 420px; height: 420px;
-    background: radial-gradient(circle, var(--gold-soft), transparent 70%);
-    pointer-events: none;
-    transform: translate(-20%, -30%);
-  }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 56px;
-    align-items: end;
-  }
-  .hero h1 { margin: 18px 0 22px; max-width: 14ch; }
-  .hero .lede { margin-bottom: 34px; }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-  .hero-panel {
-    background: var(--charcoal);
-    color: var(--cream);
-    border-radius: 16px;
-    padding: 36px 32px;
-    box-shadow: var(--shadow-md);
-    position: relative;
-  }
-  .hero-panel::after {
-    content: "";
-    position: absolute;
-    left: 0; top: 28px; bottom: 28px;
-    width: 3px;
-    background: linear-gradient(to bottom, var(--gold), var(--blue), var(--red), var(--green));
-    border-radius: 2px;
-  }
-  .hero-panel .eyebrow { color: var(--gold); margin-bottom: 14px; }
-  .hero-panel p { color: var(--muted-on-dark); font-size: 0.95rem; }
-  .hero-panel strong { color: var(--cream); font-weight: 500; }
-  .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    margin-top: 28px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border-dark);
-  }
-  .hero-stats dt {
-    font-family: var(--serif);
-    font-size: 1.7rem;
-    color: var(--cream);
-    margin-bottom: 4px;
-  }
-  .hero-stats dd {
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--muted-on-dark);
-  }
-
-  /* —— Sections —— */
-  section { padding: 88px 0; }
-  .section-head {
-    max-width: 36rem;
-    margin-bottom: 48px;
-  }
-  .section-head .eyebrow { margin-bottom: 14px; }
-  .section-head h2 { margin-bottom: 16px; }
-  .section-alt { background: var(--cream-deep); }
-  .section-dark {
-    background: var(--charcoal);
-    color: var(--cream);
-  }
-  .section-dark h2 { color: var(--cream); }
-  .section-dark .eyebrow { color: var(--gold); }
-  .section-dark .lede { color: var(--muted-on-dark); }
-
-  /* —— Client thought cards —— */
-  .thoughts {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-  }
-  .thought {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px 26px 26px;
-    box-shadow: var(--shadow-sm);
-    position: relative;
-    transition: box-shadow 0.25s, transform 0.25s;
-  }
-  .thought:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-  .thought::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 18px; bottom: 18px;
-    width: 2px;
-    border-radius: 2px;
-  }
-  .thought:nth-child(1)::before { background: var(--gold); }
-  .thought:nth-child(2)::before { background: var(--red); }
-  .thought:nth-child(3)::before { background: var(--blue); }
-  .thought:nth-child(4)::before { background: var(--green); }
-  .thought q {
-    font-family: var(--serif);
-    font-size: 1.28rem;
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.35;
-    color: var(--charcoal);
-    quotes: "“" "”";
-  }
-  .thought q::before { content: open-quote; }
-  .thought q::after { content: close-quote; }
-  .closing-note {
-    margin-top: 36px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding-top: 28px;
-    border-top: 1px solid var(--border);
-  }
-  .closing-note p { color: var(--muted); max-width: 34rem; }
-
-  /* —— Services —— */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  .service {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 32px 30px 30px;
-    box-shadow: var(--shadow-sm);
-    position: relative;
-    overflow: hidden;
-    transition: box-shadow 0.25s, transform 0.25s;
-  }
-  .service:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-  .service::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-  }
-  .service.gold::before { background: var(--gold); }
-  .service.blue::before { background: var(--blue); }
-  .service.red::before { background: var(--red); }
-  .service.green::before { background: var(--green); }
-  .pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 5px 11px;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-  .pill .dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-  }
-  .service.gold .pill { background: var(--gold-soft); color: var(--gold); }
-  .service.gold .pill .dot { background: var(--gold); }
-  .service.blue .pill { background: var(--blue-soft); color: var(--blue); }
-  .service.blue .pill .dot { background: var(--blue); }
-  .service.red .pill { background: var(--red-soft); color: var(--red); }
-  .service.red .pill .dot { background: var(--red); }
-  .service.green .pill { background: var(--green-soft); color: var(--green); }
-  .service.green .pill .dot { background: var(--green); }
-  .service h3 { margin-bottom: 8px; font-size: 1.55rem; }
-  .service .seo-line {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.02rem;
-    color: var(--muted);
     margin-bottom: 14px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--border);
   }
-  .service.gold .seo-line { border-bottom-color: rgba(184,137,46,0.25); }
-  .service.blue .seo-line { border-bottom-color: rgba(46,100,140,0.22); }
-  .service.red .seo-line { border-bottom-color: rgba(154,63,66,0.22); }
-  .service.green .seo-line { border-bottom-color: rgba(90,115,72,0.22); }
-  .service p { color: var(--muted); font-size: 0.95rem; }
-  .icon-circle {
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    margin-bottom: 18px;
+  header h1 {
     font-family: var(--serif);
-    font-size: 1.05rem;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
     font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 12px;
   }
-  .service.gold .icon-circle { background: var(--gold-soft); color: var(--gold); }
-  .service.blue .icon-circle { background: var(--blue-soft); color: var(--blue); }
-  .service.red .icon-circle { background: var(--red-soft); color: var(--red); }
-  .service.green .icon-circle { background: var(--green-soft); color: var(--green); }
-
-  .services-close {
-    margin-top: 40px;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px 32px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-  }
-  .services-close h3 { font-size: 1.45rem; margin-bottom: 6px; }
-  .services-close p { color: var(--muted); max-width: 36rem; }
-
-  /* —— Hospitality strip —— */
-  .hosp {
-    padding: 96px 0;
-  }
-  .hosp-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-  }
-  .hosp-quote {
-    font-family: var(--serif);
-    font-size: clamp(1.9rem, 3vw, 2.6rem);
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.2;
-    color: var(--cream);
-    margin: 18px 0 22px;
-  }
-  .hosp-quote::after {
-    content: "";
+  header h1 .en {
     display: block;
-    width: 48px;
-    height: 2px;
-    background: var(--gold);
-    margin-top: 22px;
-  }
-  .hosp-copy p { color: var(--muted-on-dark); margin-bottom: 1em; max-width: 34rem; }
-  .hosp-copy strong { color: var(--cream); font-weight: 500; }
-  .hosp-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 22px 0 28px;
-  }
-  .hosp-tags span {
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 7px 12px;
-    border: 1px solid var(--border-dark);
-    border-radius: 999px;
-    color: var(--muted-on-dark);
-  }
-
-  /* —— About —— */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 56px;
-    align-items: start;
-  }
-  .about-card {
-    background: var(--charcoal);
-    color: var(--cream);
-    border-radius: 16px;
-    padding: 40px 36px;
-    position: sticky;
-    top: 96px;
-  }
-  .about-card .eyebrow { color: var(--gold); }
-  .about-card h2 { color: var(--cream); margin: 14px 0 18px; }
-  .about-card p { color: var(--muted-on-dark); }
-  .about-meta {
-    margin-top: 28px;
-    padding-top: 22px;
-    border-top: 1px solid var(--border-dark);
-    display: grid;
-    gap: 14px;
-  }
-  .about-meta div {
-    display: flex;
-    gap: 12px;
-    align-items: baseline;
-  }
-  .about-meta .k {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
-    min-width: 72px;
-  }
-  .about-meta .v { color: var(--muted-on-dark); font-size: 0.92rem; }
-  .about-body h3 {
-    font-size: 1.25rem;
-    margin: 28px 0 10px;
-  }
-  .about-body h3:first-child { margin-top: 0; }
-  .about-body p { color: var(--muted); }
-  .about-body .btn { margin-top: 28px; }
-
-  /* —— Contact —— */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 0.95fr 1.05fr;
-    gap: 48px;
-    align-items: start;
-  }
-  .contact-intro .eyebrow { margin-bottom: 14px; }
-  .contact-intro h2 { margin-bottom: 16px; }
-  .contact-intro .lede { margin-bottom: 28px; }
-  .contact-aside {
-    font-size: 0.92rem;
-    color: var(--muted);
-    padding: 22px 24px;
-    border-left: 2px solid var(--gold);
-    background: var(--white);
-    border-radius: 0 var(--radius) var(--radius) 0;
-  }
-  .contact-aside a {
-    color: var(--charcoal);
-    border-bottom: 1px solid var(--border);
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .contact-aside a:hover { color: var(--blue); border-color: var(--blue); }
-  .form {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 32px;
-    box-shadow: var(--shadow-sm);
-  }
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .field { margin-bottom: 16px; }
-  .field label {
-    display: block;
-    font-size: 11px;
+    font-size: 0.55em;
     font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 8px;
+    margin-top: 8px;
+    letter-spacing: 0.02em;
   }
-  .field label .req { color: var(--red); margin-left: 2px; }
-  .field input,
-  .field select,
-  .field textarea {
-    width: 100%;
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 12px 14px;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
-  }
-  .field textarea { min-height: 130px; resize: vertical; }
-  .field input:focus,
-  .field select:focus,
-  .field textarea:focus {
-    border-color: var(--blue);
-    background: var(--white);
-    box-shadow: 0 0 0 3px var(--blue-soft);
-  }
-  .form-note {
-    margin-top: 14px;
-    font-size: 0.88rem;
+  header p {
     color: var(--muted);
-  }
-
-  /* —— Mid CTA —— */
-  .mid-cta {
-    text-align: center;
-    padding: 72px 0;
-  }
-  .mid-cta h2 { margin: 14px auto 16px; max-width: 18ch; }
-  .mid-cta .lede { margin: 0 auto 28px; }
-
-  /* —— Footer —— */
-  footer {
-    background: var(--charcoal);
-    color: var(--muted-on-dark);
-    padding: 56px 0 32px;
-    border-top: 1px solid var(--border-dark);
-  }
-  .foot-top {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr;
-    gap: 40px;
-    padding-bottom: 40px;
-    border-bottom: 1px solid var(--border-dark);
-  }
-  .foot-brand .logo { color: var(--cream); }
-  .foot-brand p {
-    margin-top: 14px;
-    font-size: 0.9rem;
-    max-width: 28rem;
+    max-width: 34rem;
+    margin: 0 auto;
     line-height: 1.6;
+    font-size: 0.98rem;
   }
-  .foot-col h4 {
-    font-family: var(--sans);
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    padding: 28px 0 48px;
+  }
+  .card {
+    border-radius: 18px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 260px;
+    transition: transform 0.2s, box-shadow 0.25s;
+    box-shadow: 0 10px 32px rgba(15,17,21,0.08);
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(15,17,21,0.14);
+  }
+  .card .tag {
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
+    opacity: 0.85;
   }
-  .foot-col ul { list-style: none; }
-  .foot-col li + li { margin-top: 10px; }
-  .foot-col a {
-    font-size: 0.92rem;
-    color: var(--muted-on-dark);
-    transition: color 0.2s;
+  .card h2 {
+    font-family: var(--serif);
+    font-size: 1.65rem;
+    font-weight: 600;
+    line-height: 1.2;
   }
-  .foot-col a:hover { color: var(--cream); }
-  .foot-bottom {
+  .card p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    flex: 1;
+    opacity: 0.92;
+  }
+  .card .go {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .card-a {
+    background: linear-gradient(145deg, #2B6CB0, #E23B3B);
+    color: #fff;
+  }
+  .card-b {
+    background: linear-gradient(145deg, #F5C518, #3D8B4F);
+    color: #0F1115;
+  }
+
+  .quiet {
+    background: var(--cream-deep);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-bottom: 56px;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    padding-top: 24px;
-    font-size: 0.82rem;
+    gap: 16px;
   }
-  .foot-legal a { margin-right: 16px; }
-  .foot-legal a:hover { color: var(--cream); }
-
-  /* —— Mobile —— */
-  .nav-toggle {
-    display: none;
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 8px 12px;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+  .quiet p {
     color: var(--muted);
-    cursor: pointer;
+    font-size: 0.92rem;
+    max-width: 36rem;
+    line-height: 1.55;
   }
-  @media (max-width: 920px) {
-    .hero-grid,
-    .hosp-inner,
-    .about-grid,
-    .contact-grid,
-    .foot-top { grid-template-columns: 1fr; }
-    .services-grid,
-    .thoughts,
-    .form-row { grid-template-columns: 1fr; }
-    .about-card { position: static; }
-    .nav-links {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0; right: 0;
-      background: var(--cream);
-      border-bottom: 1px solid var(--border);
-      flex-direction: column;
-      align-items: stretch;
-      padding: 12px 24px 20px;
-      gap: 0;
-    }
-    .nav-links.open { display: flex; }
-    .nav-links li { border-bottom: 1px solid var(--border); }
-    .nav-links a { display: block; padding: 14px 0; }
-    .nav-cta { margin-top: 12px; justify-content: center; }
-    .nav-toggle { display: inline-flex; }
-    .nav-inner { position: relative; }
-.hero { padding-top: 56px; }
-    section { padding: 64px 0; }
+  .quiet a {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--charcoal);
+  }
+  .quiet a:hover { border-color: var(--charcoal); }
+
+  footer {
+    text-align: center;
+    padding: 0 0 40px;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  footer a { border-bottom: 1px solid var(--border); }
+  footer a:hover { color: var(--charcoal); border-color: var(--charcoal); }
+
+  @media (max-width: 720px) {
+    .cards { grid-template-columns: 1fr; }
+    header { padding-top: 40px; }
   }
 </style>
 </head>
 <body>
+  <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
-<!-- Sticky nav -->
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a href="#home" class="logo">Gayle People<span>Practical HR &amp; people support</span></a>
-      <button class="nav-toggle" type="button" aria-label="Open menu" onclick="document.getElementById('navLinks').classList.toggle('open')">Menu</button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#hospitality">Hospitality</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact" class="nav-cta">Contact</a></li>
-      </ul>
-    </div>
+  <header class="wrap">
+    <p class="eyebrow">Gayle People · UI review</p>
+    <h1>เทียบ 2 สไตล์<span class="en">Compare 2 vivid styles</span></h1>
+    <p>Two loud colour treatments of the same Gayle People HR site — same English copy, saturated Insight colours (yellow / blue / red / green). Pick a variant to open full-page.</p>
   </header>
 
-  <!-- HOME / Hero -->
-  <section class="hero" id="home">
-    <div class="wrap hero-grid">
-      <div>
-        <p class="eyebrow">Hospitality &amp; growing businesses</p>
-        <h1>People support that works in the real world.</h1>
-        <p class="lede">Practical HR, finding the right people and compliance support for hospitality and growing businesses — so the people side of your business is taken care of, and you can get back to running your business.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Book a free initial conversation</a>
-          <a class="btn btn-ghost" href="#services">Explore my services</a>
-        </div>
-      </div>
-      <aside class="hero-panel" aria-label="At a glance">
-        <p class="eyebrow">Quiet confidence</p>
-        <p><strong>UK hospitality-aware HR.</strong> Warm, plain English support from someone who’s lived the kitchen, the rota and the paperwork — not just the theory.</p>
-        <dl class="hero-stats">
-          <div>
-            <dt>13+</dt>
-            <dd>Years hospitality HR</dd>
-          </div>
-          <div>
-            <dt>40+</dt>
-            <dd>Sites people experience</dd>
-          </div>
-        </dl>
-      </aside>
+  <main class="wrap">
+    <div class="cards">
+      <a class="card card-a" href="vivid-full.html">
+        <span class="tag">Variant A</span>
+        <h2>หน้าเต็มสีตามเสาบริการ</h2>
+        <p>Full-bleed coloured sections — almost full viewport height for each of the four services. White text on saturated yellow, blue, red and green blocks.</p>
+        <span class="go">Open vivid-full.html →</span>
+      </a>
+      <a class="card card-b" href="vivid-cards.html">
+        <span class="tag">Variant B</span>
+        <h2>การ์ดใหญ่สีจัดบนพื้นครีม</h2>
+        <p>Cream page + charcoal accents, with large service cards filled solid with saturated colour and white (or charcoal-on-yellow) text.</p>
+        <span class="go">Open vivid-cards.html →</span>
+      </a>
     </div>
-  </section>
 
-  <!-- What's going on? -->
-  <section class="section-alt" id="whats-going-on">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Home</p>
-        <h2>What’s going on?</h2>
-        <p class="lede">Most business owners don’t wake up thinking they need “HR.” They think:</p>
-      </div>
-      <div class="thoughts">
-        <article class="thought">
-          <q>I need to figure out our team structure for the next few months.</q>
-        </article>
-        <article class="thought">
-          <q>This employee situation is getting out of hand.</q>
-        </article>
-        <article class="thought">
-          <q>If someone checked our paperwork tomorrow, would we be fine?</q>
-        </article>
-        <article class="thought">
-          <q>I need HR help — but not a full-time HR person.</q>
-        </article>
-      </div>
-      <div class="closing-note">
-        <p>If any of those sound familiar, I can help — whether you need a single project sorted out or ongoing support for your team.</p>
-        <a class="btn btn-primary" href="#services">Explore my services</a>
-      </div>
+    <div class="quiet">
+      <p><strong>Original quiet luxury</strong> was the first draft — muted gold / blue / red / green accents on cream. Preserved so you can still open the calm version.</p>
+      <a href="quiet-luxury.html">Open quiet-luxury.html</a>
     </div>
-  </section>
+  </main>
 
-  <!-- Closing CTA (home) -->
-  <section class="mid-cta" id="lets-talk">
-    <div class="wrap">
-      <p class="eyebrow">Not sure where to start?</p>
-      <h2>Most people aren’t.</h2>
-      <p class="lede">Tell me what’s happening and I’ll tell you honestly whether I can help — and roughly what it would take.</p>
-      <a class="btn btn-primary" href="#contact">Let’s talk</a>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="section-alt" id="services">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Services</p>
-        <h2>How I can help</h2>
-        <p class="lede">Some businesses come to me with one problem to solve. Others want someone in the background all year. Both work — here’s what that looks like.</p>
-      </div>
-
-      <div class="services-grid">
-        <article class="service gold">
-          <div class="icon-circle" aria-hidden="true">01</div>
-          <span class="pill"><span class="dot"></span> Sunshine · Gold</span>
-          <h3>Find the Right People</h3>
-          <p class="seo-line">Recruitment, onboarding, right to work checks and employment contracts</p>
-          <p>From “we need someone” to “they’re legal, onboarded and ready to go.” Hiring doesn’t end when someone says yes — I help you handle the whole journey, or just the parts you don’t have time for.</p>
-        </article>
-
-        <article class="service blue">
-          <div class="icon-circle" aria-hidden="true">02</div>
-          <span class="pill"><span class="dot"></span> Cool Blue</span>
-          <h3>Get Your HR Foundation in Order</h3>
-          <p class="seo-line">HR documents, policies, employee relations, records and compliance audits</p>
-          <p>Sorted properly, once. I audit what you have and fix the gaps — so if an inspector or the Fair Work Agency checks your records tomorrow, you’re completely covered.</p>
-        </article>
-
-        <article class="service red">
-          <div class="icon-circle" aria-hidden="true">03</div>
-          <span class="pill"><span class="dot"></span> Fiery Red</span>
-          <h3>Deal With People Problems</h3>
-          <p class="seo-line">Employee relations, disciplinaries, grievances, absence, performance and workplace investigations</p>
-          <p>The situations that keep you up at night. Disciplinaries, grievances, long-term absence, performance issues, or team conflict — handled safely, step-by-step or end-to-end.</p>
-        </article>
-
-        <article class="service green">
-          <div class="icon-circle" aria-hidden="true">04</div>
-          <span class="pill"><span class="dot"></span> Earth Green</span>
-          <h3>Ongoing People Support</h3>
-          <p class="seo-line">Outsourced HR support for businesses without an in-house HR team</p>
-          <p>An HR team, without the headcount. On-call advice, proactive check-ins, and flexible monthly or as-and-when support for businesses who can’t yet justify a full-time HR Manager.</p>
-        </article>
-      </div>
-
-      <div class="services-close">
-        <div>
-          <h3>Not sure which one you need?</h3>
-          <p>Most enquiries start with “something’s come up.” Tell me what’s happening and we’ll work it out between us.</p>
-        </div>
-        <a class="btn btn-primary" href="#contact">Get in touch</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOSPITALITY -->
-  <section class="section-dark hosp" id="hospitality">
-    <div class="wrap hosp-inner">
-      <div>
-        <p class="eyebrow">Hospitality</p>
-        <p class="hosp-quote">I learned this in a kitchen, not a classroom.</p>
-        <a class="btn btn-on-dark" href="#contact">Let’s talk about your business</a>
-      </div>
-      <div class="hosp-copy">
-        <p>Over 13 years inside a growing restaurant business — operations first, then HR, then leading the people team across more than 40 sites alongside the People Director. Which means when you tell me what’s happening, I don’t need it explained.</p>
-        <p>Chefs and hourly teams. Hiring at volume, at speed, without cutting corners on checks. Sponsored workers and licence duties. Rotas, hours and breaks. The no-show on a Saturday. New site openings. All of it.</p>
-        <p><strong>I know the people decisions you make are never just people decisions — they’re service, cover and cost decisions too.</strong></p>
-        <div class="hosp-tags">
-          <span>Restaurants</span>
-          <span>Pubs &amp; bars</span>
-          <span>Cafés</span>
-          <span>Hotels</span>
-          <span>Food businesses</span>
-        </div>
-        <p>Built from hospitality. Practical for any growing business.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="wrap about-grid">
-      <aside class="about-card">
-        <p class="eyebrow">About</p>
-        <h2>Hi, I’m Gayle.</h2>
-        <p>I solve people problems for businesses that are too busy running to deal with them properly.</p>
-        <div class="about-meta">
-          <div><span class="k">Voice</span><span class="v">Warm, plain English, experienced</span></div>
-          <div><span class="k">Depth</span><span class="v">13+ years hospitality HR &amp; operations</span></div>
-          <div><span class="k">Scale</span><span class="v">People leadership across 40+ sites</span></div>
-        </div>
-      </aside>
-      <div class="about-body">
-        <h3>Where this comes from</h3>
-        <p>Over 13 years in a growing hospitality business — starting in operations, moving into a combined HR and operations role, and helping lead the people team across more than 40 sites alongside the People Director.</p>
-        <p>That route matters more than the job titles. I’ve sat on both sides of the table: the side that needs the shift covered tonight, and the side that needs it done properly.</p>
-        <h3>How I work</h3>
-        <p>I don’t think every business needs complicated systems, lengthy policies or expensive consultancy packages. You need the right level of HR for the business you actually have.</p>
-        <p>So the approach is simple: understand your business, find the problem or the risk, explain your options in plain English, and help you put something practical in place. No jargon, no hedging, and nothing you’ll never read.</p>
-        <h3>What I’m aiming for</h3>
-        <p>To make employing people easier, safer and less stressful — so you can get back to running your business.</p>
-        <a class="btn btn-primary" href="#contact">Book a free initial conversation</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section-alt" id="contact">
-    <div class="wrap contact-grid">
-      <div class="contact-intro">
-        <p class="eyebrow">Contact</p>
-        <h2>Tell me what’s happening in your business.</h2>
-        <p class="lede">No sales pitch, no obligation. If I can help, I’ll tell you how. If I can’t, I’ll tell you that too — and point you to someone who can.</p>
-        <div class="contact-aside">
-          <p>I aim to reply within one working day.</p>
-          <p style="margin-top:12px">
-            <a href="mailto:hello@example.com">Email</a>
-            &nbsp;·&nbsp;
-            <a href="#">LinkedIn</a>
-            &nbsp;·&nbsp;
-            <a href="#">Privacy Notice</a>
-          </p>
-        </div>
-      </div>
-
-      <form class="form" action="#" method="post" onsubmit="event.preventDefault(); this.querySelector('.form-note').textContent='Enquiry mock captured — wire to your form handler when ready.';">
-        <div class="form-row">
-          <div class="field">
-            <label for="name">Name <span class="req">*</span></label>
-            <input id="name" name="name" type="text" required autocomplete="name" placeholder="Your name" />
-          </div>
-          <div class="field">
-            <label for="business">Business name</label>
-            <input id="business" name="business" type="text" autocomplete="organization" placeholder="Optional" />
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="field">
-            <label for="email">Email <span class="req">*</span></label>
-            <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@business.com" />
-          </div>
-          <div class="field">
-            <label for="phone">Phone</label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Optional" />
-          </div>
-        </div>
-        <div class="field">
-          <label for="about">What’s it about? <span class="req">*</span></label>
-          <select id="about" name="about" required>
-            <option value="" disabled selected>Select one…</option>
-            <option>Finding and onboarding someone</option>
-            <option>HR documents, policies and compliance</option>
-            <option>An employee situation</option>
-            <option>Ongoing HR support</option>
-            <option>Not sure yet</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="message">Tell me briefly what’s going on <span class="req">*</span></label>
-          <textarea id="message" name="message" required placeholder="A few sentences is plenty."></textarea>
-        </div>
-        <button class="btn btn-primary" type="submit">Send enquiry</button>
-        <p class="form-note">UI mock only — no data is sent.</p>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="wrap">
-      <div class="foot-top">
-        <div class="foot-brand">
-          <a href="#home" class="logo">Gayle People<span>Practical HR &amp; people support</span></a>
-          <p>Practical HR, hiring and people compliance support for hospitality and growing businesses.</p>
-        </div>
-        <div class="foot-col">
-          <h4>Navigate</h4>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#hospitality">Hospitality</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="foot-col">
-          <h4>Connect</h4>
-          <ul>
-            <li><a href="mailto:hello@example.com">Email</a></li>
-            <li><a href="#">LinkedIn</a></li>
-            <li><a href="#">Privacy Notice</a></li>
-            <li><a href="#">Cookie Policy</a></li>
-            <li><a href="#">Terms</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="foot-bottom">
-        <p>Company registration number and registered address [add once the company is registered]</p>
-        <p class="foot-legal">© 2025 Gayle People &nbsp;·&nbsp; Placeholder brand for design review</p>
-      </div>
-    </div>
+  <footer class="wrap">
+    <p>Gayle People design comparison · <a href="https://github.com/Whytyx/KSquad">Whytyx/KSquad</a></p>
   </footer>
-
-  <script>
-    // Collapse label text toggle for design system
-}
-    // Close mobile nav on link click
-    document.querySelectorAll('#navLinks a').forEach(a => {
-      a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
-    });
-  </script>
 </body>
 </html>
