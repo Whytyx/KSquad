@@ -76,65 +76,7 @@
   p + p { margin-top: 0.9em; }
   .lede { font-size: 1.08rem; color: var(--muted); max-width: 38rem; }
 
-  /* —— Design system strip —— */
-  .ds {
-    background: var(--charcoal);
-    color: var(--cream);
-    border-bottom: 1px solid var(--border-dark);
-    font-size: 12px;
-  }
-  .ds summary {
-    list-style: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 10px 24px;
-    width: min(100%, calc(var(--max) + 48px));
-    margin-inline: auto;
-  }
-  .ds summary::-webkit-details-marker { display: none; }
-  .ds-label {
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: var(--muted-on-dark);
-    flex-shrink: 0;
-  }
-  .ds-swatches {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 18px;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  .swatch {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--muted-on-dark);
-  }
-  .swatch i {
-    width: 14px; height: 14px;
-    border-radius: 50%;
-    display: inline-block;
-    border: 1px solid rgba(247,244,239,0.18);
-  }
-  .swatch code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 11px;
-    color: #D8D2C8;
-  }
-  .ds-body {
-    border-top: 1px solid var(--border-dark);
-    padding: 14px 24px 18px;
-    width: min(100%, calc(var(--max) + 48px));
-    margin-inline: auto;
-    color: var(--muted-on-dark);
-    line-height: 1.5;
-  }
-  .ds-toggle { color: var(--gold); letter-spacing: 0.08em; font-size: 11px; text-transform: uppercase; }
+
 
   /* —— Nav —— */
   .nav {
@@ -730,36 +672,14 @@
     .nav-cta { margin-top: 12px; justify-content: center; }
     .nav-toggle { display: inline-flex; }
     .nav-inner { position: relative; }
-    .ds-swatches { justify-content: flex-start; }
-    .hero { padding-top: 56px; }
+.hero { padding-top: 56px; }
     section { padding: 64px 0; }
   }
 </style>
 </head>
 <body>
 
-  <!-- Design system (for palette approval) -->
-  <details class="ds" open>
-    <summary>
-      <span class="ds-label">Design system · palette</span>
-      <div class="ds-swatches">
-        <span class="swatch"><i style="background:#0F1115"></i> Charcoal <code>#0F1115</code></span>
-        <span class="swatch"><i style="background:#F7F4EF;border-color:#666"></i> Cream <code>#F7F4EF</code></span>
-        <span class="swatch"><i style="background:#2E648C"></i> Cool Blue <code>#2E648C</code></span>
-        <span class="swatch"><i style="background:#9A3F42"></i> Fiery Red <code>#9A3F42</code></span>
-        <span class="swatch"><i style="background:#5A7348"></i> Earth Green <code>#5A7348</code></span>
-        <span class="swatch"><i style="background:#B8892E"></i> Deep Gold <code>#B8892E</code></span>
-        <span class="ds-toggle">Collapse ▴</span>
-      </div>
-    </summary>
-    <div class="ds-body">
-      Sampled from the Insight colour wheel, then deepened and muted for on-screen luxury.
-      Accents used only as thin card borders, pill badges, icon circles, underline marks, and CTA hover — never as competing large fills.
-      Yellow → Deep Gold for readable premium text on cream and charcoal.
-    </div>
-  </details>
-
-  <!-- Sticky nav -->
+<!-- Sticky nav -->
   <header class="nav">
     <div class="wrap nav-inner">
       <a href="#home" class="logo">Gayle People<span>Practical HR &amp; people support</span></a>
@@ -1045,13 +965,7 @@
 
   <script>
     // Collapse label text toggle for design system
-    const ds = document.querySelector('.ds');
-    const toggle = document.querySelector('.ds-toggle');
-    if (ds && toggle) {
-      ds.addEventListener('toggle', () => {
-        toggle.textContent = ds.open ? 'Collapse ▴' : 'Expand ▾';
-      });
-    }
+}
     // Close mobile nav on link click
     document.querySelectorAll('#navLinks a').forEach(a => {
       a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
