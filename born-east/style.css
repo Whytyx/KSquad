@@ -29,7 +29,7 @@ h1{font-size:clamp(2.8rem,6.6vw,5.6rem)}h2{font-size:clamp(2rem,4.4vw,3.6rem)}h3
 .hero{padding:50px 0 50px}.hero-g{display:grid;grid-template-columns:1.05fr 1fr;gap:50px;align-items:center}
 .ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
 .hero-img{position:relative;padding:14px;background:var(--lilac);border:2px solid var(--ink);border-radius:34px;box-shadow:8px 8px 0 var(--ink);transform:rotate(1.2deg);transition:transform .4s}.hero-img:hover{transform:rotate(0)}
-.hero-img img{width:100%;aspect-ratio:5/4;object-fit:cover;border-radius:22px;border:2px solid var(--ink)}
+.hero-img img{width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;border-radius:22px;border:2px solid var(--ink)}
 .hero-img:after{content:"✦";position:absolute;right:-18px;top:-22px;width:64px;height:64px;display:grid;place-items:center;font-size:28px;background:var(--lime);border:2px solid var(--ink);border-radius:50%;animation:spin 9s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .note-on{position:absolute;left:-16px;bottom:26px;margin:0;background:var(--coral);color:#fff;font-size:1.05rem}
