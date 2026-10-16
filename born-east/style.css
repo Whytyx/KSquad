@@ -130,3 +130,5 @@ input,select,textarea{font:inherit;font-weight:400;padding:13px 16px;border:2px 
 .note{border-left-color:var(--lime)}.note{border-left-width:6px}
 @media(max-width:900px){.who-txt,.cta-txt{padding:44px 26px}}
 @media(max-width:620px){.scards{grid-template-columns:1fr}.scard{min-height:0}.hero{padding:44px 0 40px}.hero-txt h1{font-size:2.9rem}.hero.sub .hero-txt h1{font-size:2.5rem}}
+@media(min-width:901px){.hero-txt{max-width:none;display:grid;grid-template-columns:1.25fr 1fr;column-gap:56px;align-items:end}
+.hero-txt>*{grid-column:1}.hero-txt>.lead,.hero-txt>.ctas{grid-column:2}.hero-txt>.lead{grid-row:1/span 3;align-self:end;margin:0 0 .6em}.hero-txt>.ctas{grid-row:4;margin-top:0;align-self:start}.hero-txt>h1{grid-row:3;margin-bottom:0}.hero-txt>.stk-row{grid-row:1;justify-self:start}.hero-txt>.eyebrow{grid-row:2;justify-self:start}}
