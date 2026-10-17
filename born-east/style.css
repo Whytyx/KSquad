@@ -156,3 +156,25 @@ input,select,textarea{font:inherit;font-weight:400;padding:13px 16px;border:2px 
 @media(max-width:620px){.bec{right:14px;bottom:14px}.bec-fab{padding:13px 18px}
 .bec-panel{position:fixed;left:10px;right:10px;bottom:84px;width:auto;max-width:none;height:min(70vh,calc(100vh - 110px))}}
 html,body{overflow-x:clip}@supports not (overflow:clip){html,body{overflow-x:hidden}}
+/* language switch */
+.lang{display:inline-flex;border:2px solid var(--ink);border-radius:999px;padding:3px;background:var(--card);gap:2px;flex:none}
+.lang button{font:700 13px 'DM Sans',sans-serif;letter-spacing:.04em;border:0;background:none;color:var(--ink);border-radius:999px;padding:6px 11px;cursor:pointer;transition:background .2s,transform .2s}
+.lang button:hover{transform:translateY(-1px);background:#C6F43255}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--lime)}
+.lang-nav{display:none}
+.hdr .lang:not(.lang-nav){margin-left:6px}
+@media(max-width:900px){.hdr .lang:not(.lang-nav){margin-left:auto}.burger{margin-left:10px}.nav .lang-nav{display:inline-flex;align-self:flex-start;margin:10px 0 4px 10px}.nav .lang-nav button{font-size:15px;padding:8px 16px}}
+/* Thai typography: Latin keeps Bricolage/DM Sans; Thai glyphs fall back to Noto Sans Thai */
+body{font-family:'DM Sans','Noto Sans Thai',system-ui,sans-serif}
+h1,h2,h3,h4,.b1,.stk,.mq-in,.bec-fab,.bec-hd strong,.art-word{font-family:'Bricolage Grotesque','Noto Sans Thai',sans-serif}
+.nav>a,.ddb,input,select,textarea,.btn,.pill,.lang button,.bec{font-family:'DM Sans','Noto Sans Thai',sans-serif}
+html.lang-th body{line-height:1.75;word-break:normal;overflow-wrap:break-word;line-break:auto}
+html.lang-th h1,html.lang-th h2,html.lang-th h3,html.lang-th h4{line-height:1.3;letter-spacing:-.01em}
+html.lang-th .hero-txt h1{font-size:clamp(2.4rem,5.6vw,5rem)}html.lang-th .hero.sub .hero-txt h1{font-size:clamp(2.1rem,4.6vw,3.9rem)}
+html.lang-th .who h2.big,html.lang-th .cta-txt h2{line-height:1.3}
+html.lang-th .u{padding:.02em .14em;line-height:1.45}
+html.lang-th .eyebrow{letter-spacing:.02em;text-transform:none;font-size:13.5px}
+html.lang-th .stk{line-height:1.5}html.lang-th .lead{font-size:1.12rem}
+html.lang-th .scard-body p,html.lang-th .bec-m{line-height:1.7}
+.en-sub{display:block;font:600 .55em 'DM Sans',sans-serif;letter-spacing:0;opacity:.7;margin-top:.35em}
+@media(max-width:620px){html.lang-th .hero-txt h1{font-size:2.3rem}html.lang-th .hero.sub .hero-txt h1{font-size:2rem}html.lang-th h2{font-size:1.8rem}}
