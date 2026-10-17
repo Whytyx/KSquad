@@ -47,7 +47,15 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
           notConf: 'ขอบคุณครับ ตอนนี้ระบบส่งข้อมูลผ่านแชทยังไม่เปิดใช้งาน ข้อมูลของคุณจึง<strong>ยังไม่ได้ถูกส่ง</strong> โปรดดูที่<a href="contact.html">หน้าติดต่อเรา</a> (ช่องทางติดต่อจะแจ้งให้ทราบเร็ว ๆ นี้)',
           fail: 'ขออภัย ขณะนี้ส่งข้อมูลไม่สำเร็จ ข้อมูลจึงยังไม่ได้ถูกส่ง โปรดลองใหม่อีกครั้งภายหลัง หรือแวะดู<a href="contact.html">หน้าติดต่อเรา</a>' }
   };
-  var LKEY = 'be-chat-lang', chatLang = null, gen = 0, closed = false, lastService = 'general';
+  var LKEY = 'be-chat-lang', CKEY = 'be-chat-close-shown', chatLang = null, gen = 0, closed = false, lastService = 'general';
+  try { closed = sessionStorage.getItem(CKEY) === '1'; } catch (e) {}
+  /* Close card: shown ONCE per session. A second card only on an explicit start/buy request, and only if no unused card is visible. */
+  var START_INTENT = /(how (do|can|should) (i|we) (start|get started|begin|book|sign up|proceed)|get started|start now|i('d| would)? (like|want) to (start|book|go ahead|proceed|hire|work with)|\bbook\b|\bbooking\b|sign me up|let'?s (start|go ahead|do it)|go ahead|how much|\bprice|\bpricing|\bcost|\bquote|เริ่มยังไง|เริ่มอย่างไร|เริ่มได้|เริ่มเลย|อยากเริ่ม|เริ่มงาน|สนใจ|จอง|ใช้บริการ|ราคา|ค่าบริการ|เท่าไหร่|เท่าไร|ตกลง|เอาเลย|ติดต่อกลับ)/i;
+  function maybeCloseCard(service, lastUser){
+    if (closed && !START_INTENT.test(lastUser || '')) return;
+    if (log.querySelector('.bec-close:not([data-used])')) return;
+    closed = true; try { sessionStorage.setItem(CKEY, '1'); } catch (e) {}
+    closeCard(service); }
 
   try { var sv = sessionStorage.getItem(LKEY); if (sv === 'th' || sv === 'en') chatLang = sv; } catch (e) {}
   var siteLang = function(){ return (window.BE_I18N && window.BE_I18N.lang && window.BE_I18N.lang()) === 'th' ? 'th' : 'en'; };
@@ -90,7 +98,7 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
           else { d.remove(); add('bot', null, L.fail).setAttribute('lang', chatLang); } })
         .catch(function(){ if (my !== gen) return; d.remove(); add('bot', null, L.fail).setAttribute('lang', chatLang); });
     }); }
-  log.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('[data-lead]'); if (!b || !chatLang) return; leadForm(b.getAttribute('data-lead')); });
+  log.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('[data-lead]'); if (!b || !chatLang) return; var c = b.closest('.bec-close'); if (c) c.setAttribute('data-used', '1'); leadForm(b.getAttribute('data-lead')); });
   function markHeader(){ var b = root.querySelectorAll('[data-chat-lang]');
     for (var i = 0; i < b.length; i++) b[i].setAttribute('aria-pressed', b[i].getAttribute('data-chat-lang') === chatLang); }
   function showPicker(){ log.innerHTML = ''; msgs = []; var sug = siteLang();
@@ -100,7 +108,7 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
     d.classList.add('bec-picker'); lockInput(true); markHeader();
     var s2 = d.querySelector('.sug'); if (s2) s2.focus(); }
   function pick(l){ chatLang = l; try { sessionStorage.setItem(LKEY, l); } catch (e) {}
-    gen++; log.innerHTML = ''; msgs = []; busy = false; closed = false; lastService = 'general';
+    gen++; log.innerHTML = ''; msgs = []; busy = false; lastService = 'general';
     var g = add('bot', CL[l].hello); g.setAttribute('lang', l);
     lockInput(false); markHeader(); input.focus(); }
   root.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('[data-chat-lang]'); if (!b || !EP) return;
@@ -128,7 +136,7 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
       .then(function(r){ return r.json().then(function(j){ if (!r.ok) throw new Error(j.error || r.status); return j; }); })
         .then(function(j){ if (my !== gen) return; var a = (j.reply || '').trim() || L.noanswer;
         w.classList.remove('bec-wait'); w.textContent = a; msgs.push({role:'assistant', content:a});
-        if (j.close) { closed = true; closeCard(j.close); } })
+        if (j.close) maybeCloseCard(j.close, t); })
         .catch(function(){ if (my !== gen) return; w.classList.remove('bec-wait'); w.innerHTML = L.error; msgs.pop(); })
       .then(function(){ if (my !== gen) return; busy = false; log.scrollTop = log.scrollHeight; });
   });
