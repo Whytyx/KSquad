@@ -89,7 +89,7 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
       err.hidden = true; var sb = d.querySelector('[type=submit]'); sb.disabled = true; sb.textContent = L.sending;
       fetch(EP.replace(/\/+$/, '') + '/lead', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
         type: type, name: v.name, business: v.business, email: v.email, phone: v.phone, service: lastService, lang: chatLang,
-        messages: msgs, website: f.website.value, source: 'chat' })})
+        messages: msgs.slice(-40), website: f.website.value, source: 'chat' })})
         .then(function(r){ return r.json().catch(function(){ return {}; }); })
         .then(function(j){ if (my !== gen) return;
           if (j && j.ok === true) { d.remove(); add('bot', type === 'hot' ? L.okHot : L.okWarm).setAttribute('lang', chatLang); }
@@ -130,9 +130,9 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !panel.hidden) { open(false); fab.focus(); } });
   form.addEventListener('submit', function(e){
     e.preventDefault(); var t = input.value.trim(); if (!t || busy || !EP || !chatLang) return;
-    input.value = ''; add('user', t); msgs.push({role:'user', content:t}); msgs = msgs.slice(-10);
+    input.value = ''; add('user', t); msgs.push({role:'user', content:t});
     busy = true; var my = gen, L = CL[chatLang], w = add('bot', L.typing); w.setAttribute('lang', chatLang); w.classList.add('bec-wait');
-    fetch(EP, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({messages: msgs, lang: chatLang, closed: closed})})
+    fetch(EP, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({messages: msgs.slice(-10), lang: chatLang, closed: closed})})
       .then(function(r){ return r.json().then(function(j){ if (!r.ok) throw new Error(j.error || r.status); return j; }); })
         .then(function(j){ if (my !== gen) return; var a = (j.reply || '').trim() || L.noanswer;
         w.classList.remove('bec-wait'); w.textContent = a; msgs.push({role:'assistant', content:a});
