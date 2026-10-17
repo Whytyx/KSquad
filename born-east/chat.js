@@ -15,7 +15,6 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
       '<form class="bec-form"><label class="bec-sr" for="bec-in" data-i18n="chat_label">Your message</label>'+
       '<input id="bec-in" maxlength="500" autocomplete="off" placeholder="Type your question…" data-i18n-attr="placeholder:chat_placeholder">'+
       '<button type="submit" aria-label="Send" data-i18n-attr="aria-label:chat_send">↑</button></form>'+
-      '<div class="bec-foot"><button type="button" class="bec-ready" hidden>I’m ready</button></div>'+
       '<p class="bec-fine" data-i18n="chat_fine">AI answers can be wrong. For anything important, use the <a href="contact.html">Contact page</a>.</p>'+
     '</section>';
   document.body.appendChild(root);
@@ -28,7 +27,7 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
     en: { hello: 'Hi! 👋 Ask me anything about Born East’s services or how we work.', ph: 'Type your question…', typing: 'Typing…',
           noanswer: 'Sorry, I don’t have an answer for that. Please see our Contact page.',
           error: 'Sorry, chat isn’t available right now. Please try again later or visit our <a href="contact.html">Contact page</a>.',
-          ready: 'I’m ready', closeQ: 'Ready for the next step?', hot: 'Start now', warm: 'Get more info first',
+          hot: 'Start now', warm: 'Get more info first',
           fHot: 'Great, let’s get you started.', fWarm: 'Happy to send you more information.',
           name: 'Your name', business: 'Business name', email: 'Email', phone: 'Phone (optional)',
           consent: 'We’ll use this only to contact you about your enquiry.', send: 'Send', cancel: 'Cancel', sending: 'Sending…',
@@ -39,7 +38,7 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
     th: { hello: 'สวัสดี 👋 สอบถามเรื่องบริการหรือรูปแบบการทำงานของ Born East ได้เลย', ph: 'พิมพ์คำถามของคุณ…', typing: 'กำลังพิมพ์…',
           noanswer: 'ขออภัย ยังไม่มีข้อมูลสำหรับคำถามนี้ โปรดดูที่หน้าติดต่อเรา',
           error: 'ขออภัย ขณะนี้ระบบแชทยังใช้งานไม่ได้ โปรดลองใหม่อีกครั้งภายหลัง หรือแวะดู<a href="contact.html">หน้าติดต่อเรา</a>',
-          ready: 'พร้อมเริ่มแล้ว', closeQ: 'พร้อมไปขั้นตอนถัดไปไหมครับ', hot: 'เริ่มงานเลย', warm: 'ขอข้อมูลเพิ่มก่อน',
+          hot: 'เริ่มงานเลย', warm: 'ขอข้อมูลเพิ่มก่อน',
           fHot: 'ยอดเลยครับ มาเริ่มกันเลย', fWarm: 'ยินดีส่งข้อมูลเพิ่มเติมให้ครับ',
           name: 'ชื่อของคุณ', business: 'ชื่อธุรกิจ', email: 'อีเมล', phone: 'เบอร์โทร (ไม่บังคับ)',
           consent: 'เราจะใช้ข้อมูลนี้เพื่อติดต่อกลับเรื่องที่คุณสอบถามเท่านั้น', send: 'ส่งข้อมูล', cancel: 'ยกเลิก', sending: 'กำลังส่ง…',
@@ -49,7 +48,7 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
           fail: 'ขออภัย ขณะนี้ส่งข้อมูลไม่สำเร็จ ข้อมูลจึงยังไม่ได้ถูกส่ง โปรดลองใหม่อีกครั้งภายหลัง หรือแวะดู<a href="contact.html">หน้าติดต่อเรา</a>' }
   };
   var LKEY = 'be-chat-lang', chatLang = null, gen = 0, closed = false, lastService = 'general';
-  var readyBtn = root.querySelector('.bec-ready');
+
   try { var sv = sessionStorage.getItem(LKEY); if (sv === 'th' || sv === 'en') chatLang = sv; } catch (e) {}
   var siteLang = function(){ return (window.BE_I18N && window.BE_I18N.lang && window.BE_I18N.lang()) === 'th' ? 'th' : 'en'; };
   var sendBtn = form.querySelector('button');
@@ -57,11 +56,10 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
     input.removeAttribute('data-i18n-attr');
     input.placeholder = locked ? 'เลือกภาษาก่อน / Choose a language first' : CL[chatLang].ph;
     input.setAttribute('lang', chatLang || ''); }
-  function setReady(){ if (!EP) return; var l = chatLang || siteLang(); readyBtn.hidden = false; readyBtn.textContent = '✋ ' + CL[l].ready; readyBtn.setAttribute('lang', l); }
   function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function closeCard(service){ var L = CL[chatLang]; lastService = service || 'general';
     var old = log.querySelector('.bec-close'); if (old) old.remove();
-    var d = add('bot', null, '<span class="bec-pick-q">'+esc(L.closeQ)+'</span><span class="bec-pick">'+
+    var d = add('bot', null, '<span class="bec-pick">'+
       '<button type="button" class="sug" data-lead="hot">🔥 '+esc(L.hot)+'</button><button type="button" data-lead="warm">'+esc(L.warm)+'</button></span>');
     d.classList.add('bec-close'); d.setAttribute('lang', chatLang); }
   function leadForm(type){ var L = CL[chatLang]; var old = log.querySelector('.bec-lead'); if (old) old.remove();
@@ -93,7 +91,6 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
         .catch(function(){ if (my !== gen) return; d.remove(); add('bot', null, L.fail).setAttribute('lang', chatLang); });
     }); }
   log.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('[data-lead]'); if (!b || !chatLang) return; leadForm(b.getAttribute('data-lead')); });
-  readyBtn.addEventListener('click', function(){ if (!chatLang) pick(siteLang()); leadForm('hot'); });
   function markHeader(){ var b = root.querySelectorAll('[data-chat-lang]');
     for (var i = 0; i < b.length; i++) b[i].setAttribute('aria-pressed', b[i].getAttribute('data-chat-lang') === chatLang); }
   function showPicker(){ log.innerHTML = ''; msgs = []; var sug = siteLang();
@@ -105,7 +102,7 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
   function pick(l){ chatLang = l; try { sessionStorage.setItem(LKEY, l); } catch (e) {}
     gen++; log.innerHTML = ''; msgs = []; busy = false; closed = false; lastService = 'general';
     var g = add('bot', CL[l].hello); g.setAttribute('lang', l);
-    lockInput(false); markHeader(); setReady(); input.focus(); }
+    lockInput(false); markHeader(); input.focus(); }
   root.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('[data-chat-lang]'); if (!b || !EP) return;
     var l = b.getAttribute('data-chat-lang'); if (l === chatLang && log.childNodes.length && !log.querySelector('.bec-picker')) return; pick(l); });
   function add(role, text, html, key){ var d = document.createElement('div'); d.className = 'bec-m bec-' + role;
@@ -118,7 +115,7 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
       if (window.BE_I18N) window.BE_I18N.apply(log);
     }
     if (o && EP && chatLang) input.focus(); }
-  if (EP) { lockInput(!chatLang); markHeader(); setReady(); document.addEventListener('be:lang', function(){ if (!chatLang) setReady(); }); }
+  if (EP) { lockInput(!chatLang); markHeader(); }
   else { root.querySelector('.bec-lang').hidden = true; input.disabled = true; input.setAttribute('data-i18n-attr', 'placeholder:chat_soon_ph'); input.placeholder = 'Chat is coming soon'; form.querySelector('button').disabled = true; }
   fab.addEventListener('click', function(){ open(panel.hidden); });
   root.querySelector('.bec-x').addEventListener('click', function(){ open(false); fab.focus(); });
