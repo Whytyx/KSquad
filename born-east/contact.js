@@ -8,7 +8,7 @@
     form_sending: 'Sending…',
     form_ok_hot: 'Thanks! The owner will contact you today.',
     form_ok_warm: 'Thanks! The owner will contact you within 2-3 days.',
-    form_invalid: 'Please check your name, business name and email address.',
+    form_invalid: 'Please check your name and email address.',
     form_fail: 'Sorry, we couldn’t send your enquiry right now, so nothing was sent. Please try again later.'
   };
   // Fresh element per status so the TH/EN switcher always translates the current message.

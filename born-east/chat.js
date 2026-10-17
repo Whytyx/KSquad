@@ -29,9 +29,9 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
           error: 'Sorry, chat isn’t available right now. Please try again later or visit our <a href="contact.html">Contact page</a>.',
           hot: 'Start now', warm: 'Get more info first',
           fHot: 'Great, let’s get you started.', fWarm: 'Happy to send you more information.',
-          name: 'Your name', business: 'Business name', email: 'Email', phone: 'Phone (optional)',
+          name: 'Your name', email: 'Email', phone: 'Phone (optional)',
           consent: 'We’ll use this only to contact you about your enquiry.', send: 'Send', cancel: 'Cancel', sending: 'Sending…',
-          need: 'Please fill in your name, business name and email.', badEmail: 'Please enter a valid email address.', badPhone: 'Please check the phone number.',
+          need: 'Please fill in your name and email.', badEmail: 'Please enter a valid email address.', badPhone: 'Please check the phone number.',
           okHot: 'Thanks! The owner will contact you today.', okWarm: 'Thanks! The owner will contact you within 2-3 days.',
           notConf: 'Thanks! Sending details through the chat isn’t switched on yet, so your details have <strong>not</strong> been sent. Please see our <a href="contact.html">Contact page</a> (contact details coming soon).',
           fail: 'Sorry, we couldn’t send your details right now, so nothing was sent. Please try again later or visit our <a href="contact.html">Contact page</a>.' },
@@ -40,9 +40,9 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
           error: 'ขออภัย ขณะนี้ระบบแชทยังใช้งานไม่ได้ โปรดลองใหม่อีกครั้งภายหลัง หรือแวะดู<a href="contact.html">หน้าติดต่อเรา</a>',
           hot: 'เริ่มงานเลย', warm: 'ขอข้อมูลเพิ่มก่อน',
           fHot: 'ยอดเลยครับ มาเริ่มกันเลย', fWarm: 'ยินดีส่งข้อมูลเพิ่มเติมให้ครับ',
-          name: 'ชื่อของคุณ', business: 'ชื่อธุรกิจ', email: 'อีเมล', phone: 'เบอร์โทร (ไม่บังคับ)',
+          name: 'ชื่อของคุณ', email: 'อีเมล', phone: 'เบอร์โทร (ไม่บังคับ)',
           consent: 'เราจะใช้ข้อมูลนี้เพื่อติดต่อกลับเรื่องที่คุณสอบถามเท่านั้น', send: 'ส่งข้อมูล', cancel: 'ยกเลิก', sending: 'กำลังส่ง…',
-          need: 'กรุณากรอกชื่อ ชื่อธุรกิจ และอีเมล', badEmail: 'กรุณากรอกอีเมลให้ถูกต้อง', badPhone: 'กรุณาตรวจสอบเบอร์โทรอีกครั้ง',
+          need: 'กรุณากรอกชื่อและอีเมล', badEmail: 'กรุณากรอกอีเมลให้ถูกต้อง', badPhone: 'กรุณาตรวจสอบเบอร์โทรอีกครั้ง',
           okHot: 'ขอบคุณครับ เจ้าของจะติดต่อกลับภายในวันนี้', okWarm: 'ขอบคุณครับ เจ้าของจะติดต่อกลับภายใน 2-3 วัน',
           notConf: 'ขอบคุณครับ ตอนนี้ระบบส่งข้อมูลผ่านแชทยังไม่เปิดใช้งาน ข้อมูลของคุณจึง<strong>ยังไม่ได้ถูกส่ง</strong> โปรดดูที่<a href="contact.html">หน้าติดต่อเรา</a> (ช่องทางติดต่อจะแจ้งให้ทราบเร็ว ๆ นี้)',
           fail: 'ขออภัย ขณะนี้ส่งข้อมูลไม่สำเร็จ ข้อมูลจึงยังไม่ได้ถูกส่ง โปรดลองใหม่อีกครั้งภายหลัง หรือแวะดู<a href="contact.html">หน้าติดต่อเรา</a>' }
@@ -74,7 +74,6 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
     var d = document.createElement('form'); d.className = 'bec-m bec-bot bec-lead'; d.setAttribute('lang', chatLang); d.noValidate = true;
     d.innerHTML = '<strong class="bec-lead-t">'+esc(type === 'hot' ? L.fHot : L.fWarm)+'</strong>'+
       '<label>'+esc(L.name)+'<input name="name" maxlength="100" autocomplete="name" required></label>'+
-      '<label>'+esc(L.business)+'<input name="business" maxlength="120" autocomplete="organization" required></label>'+
       '<label>'+esc(L.email)+'<input name="email" type="email" maxlength="200" autocomplete="email" required></label>'+
       '<label>'+esc(L.phone)+'<input name="phone" type="tel" maxlength="40" autocomplete="tel"></label>'+
       '<label class="bec-hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>'+
@@ -83,12 +82,12 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
     log.appendChild(d); d.scrollIntoView({block:'nearest'}); log.scrollTop = log.scrollHeight; d.querySelector('[name=name]').focus();
     d.querySelector('[data-cancel]').addEventListener('click', function(){ d.remove(); input.focus(); });
     d.addEventListener('submit', function(e){ e.preventDefault(); var f = d.elements, err = d.querySelector('.bec-err'), my = gen;
-      var v = { name: f.name.value.trim(), business: f.business.value.trim(), email: f.email.value.trim(), phone: f.phone.value.trim() };
-      var msg = (!v.name || !v.business || !v.email) ? L.need : !/^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[A-Za-z]{2,}$/.test(v.email) ? L.badEmail : (v.phone && !/^[0-9+()\-.\s]{6,40}$/.test(v.phone)) ? L.badPhone : '';
+      var v = { name: f.name.value.trim(), email: f.email.value.trim(), phone: f.phone.value.trim() };
+      var msg = (!v.name || !v.email) ? L.need : !/^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[A-Za-z]{2,}$/.test(v.email) ? L.badEmail : (v.phone && !/^[0-9+()\-.\s]{6,40}$/.test(v.phone)) ? L.badPhone : '';
       if (msg) { err.textContent = msg; err.hidden = false; return; }
       err.hidden = true; var sb = d.querySelector('[type=submit]'); sb.disabled = true; sb.textContent = L.sending;
       fetch(EP.replace(/\/+$/, '') + '/lead', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
-        type: type, name: v.name, business: v.business, email: v.email, phone: v.phone, service: lastService, lang: chatLang,
+        type: type, name: v.name, email: v.email, phone: v.phone, service: lastService, lang: chatLang,
         messages: msgs.slice(-40), website: f.website.value, source: 'chat' })})
         .then(function(r){ return r.json().catch(function(){ return {}; }); })
         .then(function(j){ if (my !== gen) return;
