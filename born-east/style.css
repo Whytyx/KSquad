@@ -155,3 +155,4 @@ input,select,textarea{font:inherit;font-weight:400;padding:13px 16px;border:2px 
 .bec-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 @media(max-width:620px){.bec{right:14px;bottom:14px}.bec-fab{padding:13px 18px}
 .bec-panel{position:fixed;left:10px;right:10px;bottom:84px;width:auto;max-width:none;height:min(70vh,calc(100vh - 110px))}}
+html,body{overflow-x:clip}@supports not (overflow:clip){html,body{overflow-x:hidden}}
