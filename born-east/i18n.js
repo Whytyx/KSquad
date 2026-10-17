@@ -3,6 +3,12 @@
    data-i18n-attr="attr:key;attr2:key2". Thai text lives in TH below; edit it there. */
 (function(){
 var TH = {
+ "i_d_like_to_start_now": "ฉันอยากเริ่มงานเลย",
+ "form_sending": "กำลังส่ง…",
+ "form_ok_hot": "ขอบคุณครับ เจ้าของจะติดต่อกลับภายในวันนี้",
+ "form_ok_warm": "ขอบคุณครับ เจ้าของจะติดต่อกลับภายใน 2-3 วัน",
+ "form_invalid": "กรุณาตรวจสอบชื่อ ชื่อธุรกิจ และอีเมลอีกครั้ง",
+ "form_fail": "ขออภัย ขณะนี้ส่งข้อความไม่สำเร็จ ข้อความจึงยังไม่ได้ถูกส่ง โปรดลองใหม่อีกครั้งภายหลัง",
  "about_born_east_solutions": "เกี่ยวกับเรา | Born East Solutions",
  "business_support_for_hospitality_and": "ที่ปรึกษาและผู้ช่วยด้านธุรกิจ สำหรับร้านอาหาร ธุรกิจบริการ และธุรกิจอิสระ",
  "open_menu": "เปิดเมนู",

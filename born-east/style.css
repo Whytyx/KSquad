@@ -189,3 +189,23 @@ html.lang-th .scard-body p,html.lang-th .bec-m{line-height:1.7}
 .bec-pick button{font:700 15px 'DM Sans','Noto Sans Thai',sans-serif;border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 20px;cursor:pointer;transition:transform .15s,box-shadow .15s}
 .bec-pick button:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--ink)}
 .bec-pick button.sug{background:var(--lime);box-shadow:3px 3px 0 var(--ink)}
+/* chat close card + lead mini-form */
+.bec-close{max-width:100%}
+.bec-close .bec-pick button.sug{background:var(--lime)}
+.bec-lead{display:grid;gap:9px;max-width:100%;width:100%;align-self:stretch;white-space:normal;background:var(--card)}
+.bec-lead-t{font:800 1.05rem 'Bricolage Grotesque','Noto Sans Thai',sans-serif;letter-spacing:-.01em}
+.bec-lead label{display:grid;gap:4px;font-weight:700;font-size:13.5px}
+.bec-lead input{padding:9px 12px;font-size:16px;border-radius:12px;border:2px solid var(--ink);background:var(--bg)}
+.bec-lead input:focus{outline:3px solid var(--lime);outline-offset:1px}
+.bec-consent{font-size:12px;color:var(--muted);line-height:1.45}
+.bec-err{margin:0;font-size:13px;font-weight:700;color:#8a1c00;background:#fff1ec;border:2px solid var(--ink);border-radius:10px;padding:6px 10px}
+.bec-lead .bec-pick button[disabled]{opacity:.6;cursor:wait}
+.bec-hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+.bec-foot{display:flex;justify-content:flex-end;padding:8px 14px 0;background:var(--card)}
+.bec-ready{font:700 13px 'DM Sans','Noto Sans Thai',sans-serif;background:none;border:0;border-bottom:2px solid var(--lime);padding:2px 0;cursor:pointer;color:var(--ink)}
+.bec-ready:hover{background:var(--lime)}
+.bec-ready[hidden]{display:none}
+/* contact form */
+.form .chk-row{display:flex;gap:10px;align-items:center;font-weight:700}.form .chk-row input{width:20px;height:20px;accent-color:#121212}
+.form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form .note.ok{border-left-color:var(--lime);background:#C6F4322e;padding:10px 14px;border-radius:10px}
