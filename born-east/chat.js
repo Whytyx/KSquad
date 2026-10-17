@@ -1,6 +1,6 @@
 /* Born East chat widget. Set the endpoint below once the Worker is deployed.
    NEVER put an API key here: this file is public. The key lives only in the Worker secret. */
-window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || '';
+window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born-east-chat.borneast.workers.dev';
 (function(){
   var EP = window.BORN_EAST_CHAT_ENDPOINT, msgs = [], busy = false;
   var root = document.createElement('div'); root.className = 'bec';
