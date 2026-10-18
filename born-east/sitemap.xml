@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://borneastsolutions.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://borneastsolutions.com/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://borneastsolutions.com/?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://borneastsolutions.com/"/>
+  </url>
+  <url><loc>https://borneastsolutions.com/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://borneastsolutions.com/about"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://borneastsolutions.com/about?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://borneastsolutions.com/about"/>
+  </url>
+  <url><loc>https://borneastsolutions.com/people-employment</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://borneastsolutions.com/people-employment"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://borneastsolutions.com/people-employment?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://borneastsolutions.com/people-employment"/>
+  </url>
+  <url><loc>https://borneastsolutions.com/food-safety</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://borneastsolutions.com/food-safety"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://borneastsolutions.com/food-safety?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://borneastsolutions.com/food-safety"/>
+  </url>
+  <url><loc>https://borneastsolutions.com/business-planning</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://borneastsolutions.com/business-planning"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://borneastsolutions.com/business-planning?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://borneastsolutions.com/business-planning"/>
+  </url>
+  <url><loc>https://borneastsolutions.com/customer-experience</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://borneastsolutions.com/customer-experience"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://borneastsolutions.com/customer-experience?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://borneastsolutions.com/customer-experience"/>
+  </url>
+  <url><loc>https://borneastsolutions.com/how-we-work</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://borneastsolutions.com/how-we-work"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://borneastsolutions.com/how-we-work?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://borneastsolutions.com/how-we-work"/>
+  </url>
+  <url><loc>https://borneastsolutions.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://borneastsolutions.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://borneastsolutions.com/contact?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://borneastsolutions.com/contact"/>
+  </url>
+</urlset>
