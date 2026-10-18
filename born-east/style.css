@@ -276,3 +276,11 @@ html.lang-th .scard-body p,html.lang-th .bec-m{line-height:1.7}
 }
 
 .b1,.b2{white-space:nowrap}@media(max-width:380px){.b1{font-size:1.22rem}.b2{letter-spacing:.32em}.hdr .lang button{padding:6px 9px}}
+
+/* stickers + pills on phones: stickers one line (JS scales font to fit), pills shrink-wrap */
+@media(max-width:600px){
+ .stk{white-space:nowrap;max-width:none}.stk.stk-wrap{white-space:normal;max-width:100%}
+ .stk-row .stk,.stk{font-size:clamp(12.5px,3.9vw,15.5px);padding:7px 14px}
+ .eyebrow{width:fit-content;max-width:100%;box-sizing:border-box}
+ .who-txt,.cta-txt,.hero-txt,.who>*,.cta>*{min-width:0}
+}
