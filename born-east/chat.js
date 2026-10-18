@@ -26,7 +26,7 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
   var CL = {
     en: { hello: 'Hi! 👋 Ask me anything about Born East’s services or how we work.', ph: 'Type your question…', typing: 'Typing…',
           helloName: 'Thanks, {n}! 👋 Ask me anything about Born East’s services or how we work.',
-          gateT: 'Before we chat, please tell us who you are.', gateGo: 'Start chat', gatePh: 'Enter your name and email above first',
+          gateT: 'Before we chat, please tell us who you are.', gateGo: 'Start chat', gatePh: 'Add your details above first',
           privacy: 'We keep this conversation so we can follow up on your enquiry.',
           confirm: 'We’ll send your details ({n}, {e}) to the owner.',
           noanswer: 'Sorry, I don’t have an answer for that. Please see our Contact page.',
@@ -41,7 +41,7 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
           fail: 'Sorry, we couldn’t send your details right now, so nothing was sent. Please try again later or visit our <a href="contact.html">Contact page</a>.' },
     th: { hello: 'สวัสดี 👋 สอบถามเรื่องบริการหรือรูปแบบการทำงานของ Born East ได้เลย', ph: 'พิมพ์คำถามของคุณ…', typing: 'กำลังพิมพ์…',
           helloName: 'ขอบคุณครับคุณ{n} 👋 สอบถามเรื่องบริการหรือรูปแบบการทำงานของ Born East ได้เลย',
-          gateT: 'ก่อนเริ่มคุย ขอทราบชื่อและอีเมลของคุณหน่อยนะครับ', gateGo: 'เริ่มแชท', gatePh: 'กรอกชื่อและอีเมลด้านบนก่อนนะครับ',
+          gateT: 'ก่อนเริ่มคุย ขอทราบชื่อและอีเมลของคุณหน่อยนะครับ', gateGo: 'เริ่มแชท', gatePh: 'กรอกข้อมูลด้านบนก่อนนะครับ',
           privacy: 'เราจะเก็บบทสนทนานี้ไว้เพื่อติดตามเรื่องที่คุณสอบถาม',
           confirm: 'เราจะส่งข้อมูลของคุณ ({n}, {e}) ให้เจ้าของ',
           noanswer: 'ขออภัย ยังไม่มีข้อมูลสำหรับคำถามนี้ โปรดดูที่หน้าติดต่อเรา',
