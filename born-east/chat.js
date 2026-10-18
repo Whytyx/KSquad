@@ -154,7 +154,13 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
     if (o && EP && chatLang && visitor) input.focus(); }
   if (EP) { lockInput(!chatLang || !visitor); markHeader(); }
   else { root.querySelector('.bec-lang').hidden = true; input.disabled = true; input.setAttribute('data-i18n-attr', 'placeholder:chat_soon_ph'); input.placeholder = 'Chat is coming soon'; form.querySelector('button').disabled = true; }
-  fab.addEventListener('click', function(){ open(panel.hidden); });
+  /* Phones: keep the panel (and its input) inside the visible area when the on-screen keyboard opens. */
+  var mq = window.matchMedia ? matchMedia('(max-width:620px)') : null;
+  function fitVV(){ var vv = window.visualViewport;
+    if (!vv || !mq || !mq.matches || panel.hidden) { panel.style.height = ''; panel.style.top = ''; return; }
+    panel.style.top = (vv.offsetTop + 8) + 'px'; panel.style.height = Math.max(260, vv.height - 16) + 'px'; log.scrollTop = log.scrollHeight; }
+  if (window.visualViewport) { visualViewport.addEventListener('resize', fitVV); visualViewport.addEventListener('scroll', fitVV); }
+  fab.addEventListener('click', function(){ open(panel.hidden); fitVV(); });
   root.querySelector('.bec-x').addEventListener('click', function(){ open(false); fab.focus(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !panel.hidden) { open(false); fab.focus(); } });
   form.addEventListener('submit', function(e){

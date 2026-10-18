@@ -218,10 +218,25 @@ function get(){ try{ var q=new URLSearchParams(location.search).get('lang'); if(
 function remember(el){ if(EN.has(el)) return EN.get(el); var o={html:el.hasAttribute('data-i18n')?el.innerHTML:null,attrs:{}};
   (el.getAttribute('data-i18n-attr')||'').split(';').forEach(function(p){ var a=p.split(':')[0]; if(a) o.attrs[a]=el.getAttribute(a); });
   EN.set(el,o); return o; }
+/* Thai has no spaces, so browsers may split compound words/phrases across lines (e.g. สหราช|อาณาจักร).
+   Wrap known phrases in <span class="nw"> (white-space:nowrap) so lines break at natural phrase boundaries. Text only, never inside tags. */
+var NW=['สหราชอาณาจักร','ความปลอดภัย','สุขอนามัย','ข้อกำหนด','ตามกฎหมาย','หน่วยงานท้องถิ่น','หน่วยงานทางการ',
+ 'ธุรกิจบริการ','ธุรกิจอิสระ','ธุรกิจขนาดเล็ก','ธุรกิจของคุณ','ธุรกิจอาหาร','ร้านสั่งกลับบ้าน','ร้านอาหาร','ร้านค้าอิสระ','ประสบการณ์ลูกค้า','การวางแผน','วางแผนธุรกิจ',
+ 'งานบุคคล','การจ้างงาน','ลายลักษณ์อักษร','ข้อร้องเรียน','ความคิดเห็น','ที่ปรึกษา','เจ้าหน้าที่','พนักงาน','ลูกค้า','เอกสาร','ขั้นตอน','ค่าบริการ','ขอบเขตงาน','แผนปฏิบัติการ',
+ 'ไม่บังคับ','เราพร้อมดูแล','ติดต่อเรา','เบื้องหลัง','ที่ใช้ได้จริง','อย่างต่อเนื่อง','อย่างสม่ำเสมอ','ที่ชัดเจน','ให้เป็นระบบ','ช่วยเหลือ','ความสำคัญ','ทางออก','แบ่งเบา','ทิศทาง','ตรวจสอบ','มีเวลา','สม่ำเสมอ','รายละเอียด','ปฏิบัติตาม','เป็นประจำ','ไปด้วยกัน'];
+var NWRE=new RegExp('('+NW.sort(function(a,b){return b.length-a.length;}).join('|')+')','g');
+function nwTH(h){ return String(h).split(/(<[^>]+>)/).map(function(part){ return part.charAt(0)==='<'?part:part.replace(NWRE,'<span class="nw">$1</span>'); }).join(''); }
+/* In flex/grid boxes (eyebrows, some buttons) every text run becomes its own flex item, so keep the text in ONE span. */
+function thHTML(el,v,orig){ if(el.tagName==='TITLE') return v; var d=getComputedStyle(el).display;
+  if(/flex|grid/.test(d)) return orig.indexOf('<')<0 ? '<span class="nwi">'+nwTH(v)+'</span>' : v;
+  /* Headings and buttons: Thai uses spaces between phrases, so keep each short phrase whole and break only at those spaces. */
+  if(/^H[1-4]$/.test(el.tagName)||(el.closest&&el.closest('.btn,.pill'))) return String(v).split(/(<[^>]+>)/).map(function(part){
+    return part.charAt(0)==='<'?part:part.replace(/[^\s]+/g,function(w){ return (/[\u0E00-\u0E7F]/.test(w)&&w.length<=16)?'<span class="nw">'+w+'</span>':nwTH(w); }); }).join('');
+  return nwTH(v); }
 function apply(scope){ scope=scope||document;
   var els=scope.querySelectorAll('[data-i18n],[data-i18n-attr]');
   for(var i=0;i<els.length;i++){ var el=els[i], o=remember(el), k=el.getAttribute('data-i18n');
-    if(k){ var v=cur==='th'&&TH[k]; el.innerHTML=v||o.html; }
+    if(k){ var v=cur==='th'&&TH[k]; el.innerHTML=v?thHTML(el,v,o.html):o.html; }
     (el.getAttribute('data-i18n-attr')||'').split(';').forEach(function(p){ var a=p.split(':'),n=a[0],kk=a[1]; if(!n) return;
       el.setAttribute(n, (cur==='th'&&TH[kk])||o.attrs[n]); });
   }
