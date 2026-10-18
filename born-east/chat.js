@@ -9,7 +9,7 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg><span data-i18n="chat_fab">Ask us</span></button>'+
     '<section class="bec-panel" id="bec-panel" role="dialog" aria-label="Chat with Born East" data-i18n-attr="aria-label:chat_dialog" hidden>'+
       '<header class="bec-hd"><div><strong>Born East</strong><small data-i18n="chat_sub">Quick questions about our services</small></div>'+
-      '<div class="bec-lang" role="group" aria-label="Chat language / ภาษาแชท"><button type="button" data-chat-lang="th" lang="th" aria-pressed="false">TH</button><button type="button" data-chat-lang="en" lang="en" aria-pressed="false">EN</button></div>'+
+      '<div class="bec-lang" role="group" aria-label="Chat language / ภาษาแชท"><button type="button" data-chat-lang="en" lang="en" aria-pressed="false">EN</button><button type="button" data-chat-lang="th" lang="th" aria-pressed="false">TH</button></div>'+
       '<button class="bec-x" type="button" aria-label="Close chat" data-i18n-attr="aria-label:chat_close">×</button></header>'+
       '<div class="bec-log" aria-live="polite"></div>'+
       '<form class="bec-form"><label class="bec-sr" for="bec-in" data-i18n="chat_label">Your message</label>'+
