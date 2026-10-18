@@ -224,3 +224,4 @@ html.lang-th .scard-body p,html.lang-th .bec-m{line-height:1.7}
 .legal-help{margin:24px 0 0;padding:18px 22px;border:2px solid var(--ink);border-radius:20px;background:var(--lime);max-width:900px}
 @media(max-width:900px){.legal{grid-template-columns:1fr}}
 .hero-txt .value{font-weight:700;font-size:1.08rem;margin:16px 0 0;max-width:560px}
+.bec-lead-who{margin:0;font-size:14px;line-height:1.5;overflow-wrap:anywhere}

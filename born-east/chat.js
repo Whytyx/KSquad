@@ -25,6 +25,10 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
   /* Strings that follow the CHAT language (chosen by the visitor), not the site language. */
   var CL = {
     en: { hello: 'Hi! 👋 Ask me anything about Born East’s services or how we work.', ph: 'Type your question…', typing: 'Typing…',
+          helloName: 'Thanks, {n}! 👋 Ask me anything about Born East’s services or how we work.',
+          gateT: 'Before we chat, please tell us who you are.', gateGo: 'Start chat', gatePh: 'Enter your name and email above first',
+          privacy: 'We keep this conversation so we can follow up on your enquiry.',
+          confirm: 'We’ll send your details ({n}, {e}) to the owner.',
           noanswer: 'Sorry, I don’t have an answer for that. Please see our Contact page.',
           error: 'Sorry, chat isn’t available right now. Please try again later or visit our <a href="contact.html">Contact page</a>.',
           hot: 'Start now', warm: 'Get more info first',
@@ -36,6 +40,10 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
           notConf: 'Thanks! Sending details through the chat isn’t switched on yet, so your details have <strong>not</strong> been sent. Please see our <a href="contact.html">Contact page</a> (contact details coming soon).',
           fail: 'Sorry, we couldn’t send your details right now, so nothing was sent. Please try again later or visit our <a href="contact.html">Contact page</a>.' },
     th: { hello: 'สวัสดี 👋 สอบถามเรื่องบริการหรือรูปแบบการทำงานของ Born East ได้เลย', ph: 'พิมพ์คำถามของคุณ…', typing: 'กำลังพิมพ์…',
+          helloName: 'ขอบคุณครับคุณ{n} 👋 สอบถามเรื่องบริการหรือรูปแบบการทำงานของ Born East ได้เลย',
+          gateT: 'ก่อนเริ่มคุย ขอทราบชื่อและอีเมลของคุณหน่อยนะครับ', gateGo: 'เริ่มแชท', gatePh: 'กรอกชื่อและอีเมลด้านบนก่อนนะครับ',
+          privacy: 'เราจะเก็บบทสนทนานี้ไว้เพื่อติดตามเรื่องที่คุณสอบถาม',
+          confirm: 'เราจะส่งข้อมูลของคุณ ({n}, {e}) ให้เจ้าของ',
           noanswer: 'ขออภัย ยังไม่มีข้อมูลสำหรับคำถามนี้ โปรดดูที่หน้าติดต่อเรา',
           error: 'ขออภัย ขณะนี้ระบบแชทยังใช้งานไม่ได้ โปรดลองใหม่อีกครั้งภายหลัง หรือแวะดู<a href="contact.html">หน้าติดต่อเรา</a>',
           hot: 'เริ่มงานเลย', warm: 'ขอข้อมูลเพิ่มก่อน',
@@ -49,6 +57,14 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
   };
   var LKEY = 'be-chat-lang', CKEY = 'be-chat-close-shown', chatLang = null, gen = 0, closed = false, lastService = 'general';
   try { closed = sessionStorage.getItem(CKEY) === '1'; } catch (e) {}
+  /* Visitor details (required before chatting) and a per-tab session id, both kept in sessionStorage only. */
+  var VKEY = 'be-chat-visitor', SKEY = 'be-chat-session', visitor = null, sess = null;
+  var EMAIL_OK = /^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[A-Za-z]{2,}$/;
+  try { var vv = JSON.parse(sessionStorage.getItem(VKEY) || 'null'); if (vv && vv.name && EMAIL_OK.test(vv.email || '')) visitor = vv; } catch (e) {}
+  try { sess = JSON.parse(sessionStorage.getItem(SKEY) || 'null'); } catch (e) {}
+  if (!sess || !sess.id) { sess = { id: (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'be-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10), started: new Date().toISOString() };
+    try { sessionStorage.setItem(SKEY, JSON.stringify(sess)); } catch (e) {} }
+  function fill(t){ return t.replace('{n}', visitor ? visitor.name : '').replace('{e}', visitor ? visitor.email : ''); }
   /* Close card: shown ONCE per session. A second card only on an explicit start/buy request, and only if no unused card is visible. */
   var START_INTENT = /(how (do|can|should) (i|we) (start|get started|begin|book|sign up|proceed)|get started|start now|i('d| would)? (like|want) to (start|book|go ahead|proceed|hire|work with)|\bbook\b|\bbooking\b|sign me up|let'?s (start|go ahead|do it)|go ahead|how much|\bprice|\bpricing|\bcost|\bquote|เริ่มยังไง|เริ่มอย่างไร|เริ่มได้|เริ่มเลย|อยากเริ่ม|เริ่มงาน|สนใจ|จอง|ใช้บริการ|ราคา|ค่าบริการ|เท่าไหร่|เท่าไร|ตกลง|เอาเลย|ติดต่อกลับ)/i;
   function maybeCloseCard(service, lastUser){
@@ -62,7 +78,7 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
   var sendBtn = form.querySelector('button');
   function lockInput(locked){ input.disabled = locked; sendBtn.disabled = locked;
     input.removeAttribute('data-i18n-attr');
-    input.placeholder = locked ? 'เลือกภาษาก่อน / Choose a language first' : CL[chatLang].ph;
+    input.placeholder = !locked ? CL[chatLang].ph : (chatLang && !visitor) ? CL[chatLang].gatePh : 'เลือกภาษาก่อน / Choose a language first';
     input.setAttribute('lang', chatLang || ''); }
   function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function closeCard(service){ var L = CL[chatLang]; lastService = service || 'general';
@@ -73,22 +89,21 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
   function leadForm(type){ var L = CL[chatLang]; var old = log.querySelector('.bec-lead'); if (old) old.remove();
     var d = document.createElement('form'); d.className = 'bec-m bec-bot bec-lead'; d.setAttribute('lang', chatLang); d.noValidate = true;
     d.innerHTML = '<strong class="bec-lead-t">'+esc(type === 'hot' ? L.fHot : L.fWarm)+'</strong>'+
-      '<label>'+esc(L.name)+'<input name="name" maxlength="100" autocomplete="name" required></label>'+
-      '<label>'+esc(L.email)+'<input name="email" type="email" maxlength="200" autocomplete="email" required></label>'+
+      '<p class="bec-lead-who">'+esc(fill(L.confirm))+'</p>'+
       '<label>'+esc(L.phone)+'<input name="phone" type="tel" maxlength="40" autocomplete="tel"></label>'+
       '<label class="bec-hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>'+
       '<small class="bec-consent">'+esc(L.consent)+'</small><p class="bec-err" role="alert" hidden></p>'+
       '<span class="bec-pick"><button type="submit" class="sug">'+esc(L.send)+'</button><button type="button" data-cancel>'+esc(L.cancel)+'</button></span>';
-    log.appendChild(d); d.scrollIntoView({block:'nearest'}); log.scrollTop = log.scrollHeight; d.querySelector('[name=name]').focus();
+    log.appendChild(d); d.scrollIntoView({block:'nearest'}); log.scrollTop = log.scrollHeight; d.querySelector('[type=submit]').focus();
     d.querySelector('[data-cancel]').addEventListener('click', function(){ d.remove(); input.focus(); });
     d.addEventListener('submit', function(e){ e.preventDefault(); var f = d.elements, err = d.querySelector('.bec-err'), my = gen;
-      var v = { name: f.name.value.trim(), email: f.email.value.trim(), phone: f.phone.value.trim() };
+      var v = { name: visitor ? visitor.name : '', email: visitor ? visitor.email : '', phone: f.phone.value.trim() };
       var msg = (!v.name || !v.email) ? L.need : !/^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[A-Za-z]{2,}$/.test(v.email) ? L.badEmail : (v.phone && !/^[0-9+()\-.\s]{6,40}$/.test(v.phone)) ? L.badPhone : '';
       if (msg) { err.textContent = msg; err.hidden = false; return; }
       err.hidden = true; var sb = d.querySelector('[type=submit]'); sb.disabled = true; sb.textContent = L.sending;
       fetch(EP.replace(/\/+$/, '') + '/lead', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
         type: type, name: v.name, email: v.email, phone: v.phone, service: lastService, lang: chatLang,
-        messages: msgs.slice(-40), website: f.website.value, source: 'chat' })})
+        messages: msgs.slice(-40), website: f.website.value, source: 'chat', session: sess.id, started: sess.started })})
         .then(function(r){ return r.json().catch(function(){ return {}; }); })
         .then(function(j){ if (my !== gen) return;
           if (j && j.ok === true) { d.remove(); add('bot', type === 'hot' ? L.okHot : L.okWarm).setAttribute('lang', chatLang); }
@@ -107,9 +122,24 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
     d.classList.add('bec-picker'); lockInput(true); markHeader();
     var s2 = d.querySelector('.sug'); if (s2) s2.focus(); }
   function pick(l){ chatLang = l; try { sessionStorage.setItem(LKEY, l); } catch (e) {}
-    gen++; log.innerHTML = ''; msgs = []; busy = false; lastService = 'general';
-    var g = add('bot', CL[l].hello); g.setAttribute('lang', l);
-    lockInput(false); markHeader(); input.focus(); }
+    gen++; log.innerHTML = ''; msgs = []; busy = false; lastService = 'general'; markHeader();
+    if (!visitor) { gate(); return; }
+    var g = add('bot', fill(CL[l].helloName)); g.setAttribute('lang', l);
+    lockInput(false); input.focus(); }
+  function gate(){ var L = CL[chatLang]; lockInput(true);
+    var d = document.createElement('form'); d.className = 'bec-m bec-bot bec-lead bec-gate'; d.setAttribute('lang', chatLang); d.noValidate = true;
+    d.innerHTML = '<strong class="bec-lead-t">'+esc(L.gateT)+'</strong>'+
+      '<label>'+esc(L.name)+'<input name="name" maxlength="100" autocomplete="name" required></label>'+
+      '<label>'+esc(L.email)+'<input name="email" type="email" maxlength="200" autocomplete="email" inputmode="email" required></label>'+
+      '<small class="bec-consent">'+esc(L.privacy)+'</small><p class="bec-err" role="alert" hidden></p>'+
+      '<span class="bec-pick"><button type="submit" class="sug">'+esc(L.gateGo)+'</button></span>';
+    log.appendChild(d); log.scrollTop = log.scrollHeight; d.querySelector('[name=name]').focus();
+    d.addEventListener('submit', function(e){ e.preventDefault(); var f = d.elements, err = d.querySelector('.bec-err');
+      var n = f.name.value.replace(/\s+/g, ' ').trim(), em = f.email.value.trim();
+      var msg = (!n || !em) ? L.need : !EMAIL_OK.test(em) ? L.badEmail : '';
+      if (msg) { err.textContent = msg; err.hidden = false; (n ? f.email : f.name).focus(); return; }
+      visitor = { name: n.slice(0, 100), email: em.slice(0, 200) }; try { sessionStorage.setItem(VKEY, JSON.stringify(visitor)); } catch (x) {}
+      pick(chatLang); }); }
   root.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('[data-chat-lang]'); if (!b || !EP) return;
     var l = b.getAttribute('data-chat-lang'); if (l === chatLang && log.childNodes.length && !log.querySelector('.bec-picker')) return; pick(l); });
   function add(role, text, html, key){ var d = document.createElement('div'); d.className = 'bec-m bec-' + role;
@@ -121,17 +151,17 @@ window.BORN_EAST_CHAT_ENDPOINT = window.BORN_EAST_CHAT_ENDPOINT || 'https://born
       else add('bot', null, 'Hi! 👋 Chat is coming soon. In the meantime, have a look at our <a href="contact.html">Contact page</a>.', 'chat_soon');
       if (window.BE_I18N) window.BE_I18N.apply(log);
     }
-    if (o && EP && chatLang) input.focus(); }
-  if (EP) { lockInput(!chatLang); markHeader(); }
+    if (o && EP && chatLang && visitor) input.focus(); }
+  if (EP) { lockInput(!chatLang || !visitor); markHeader(); }
   else { root.querySelector('.bec-lang').hidden = true; input.disabled = true; input.setAttribute('data-i18n-attr', 'placeholder:chat_soon_ph'); input.placeholder = 'Chat is coming soon'; form.querySelector('button').disabled = true; }
   fab.addEventListener('click', function(){ open(panel.hidden); });
   root.querySelector('.bec-x').addEventListener('click', function(){ open(false); fab.focus(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !panel.hidden) { open(false); fab.focus(); } });
   form.addEventListener('submit', function(e){
-    e.preventDefault(); var t = input.value.trim(); if (!t || busy || !EP || !chatLang) return;
+    e.preventDefault(); var t = input.value.trim(); if (!t || busy || !EP || !chatLang || !visitor) return;
     input.value = ''; add('user', t); msgs.push({role:'user', content:t});
     busy = true; var my = gen, L = CL[chatLang], w = add('bot', L.typing); w.setAttribute('lang', chatLang); w.classList.add('bec-wait');
-    fetch(EP, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({messages: msgs.slice(-10), lang: chatLang, closed: closed})})
+    fetch(EP, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({messages: msgs.slice(-40), lang: chatLang, closed: closed, name: visitor.name, email: visitor.email, session: sess.id, started: sess.started})})
       .then(function(r){ return r.json().then(function(j){ if (!r.ok) throw new Error(j.error || r.status); return j; }); })
         .then(function(j){ if (my !== gen) return; var a = (j.reply || '').trim() || L.noanswer;
         w.classList.remove('bec-wait'); w.textContent = a; msgs.push({role:'assistant', content:a});
