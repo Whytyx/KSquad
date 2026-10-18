@@ -1,0 +1,24 @@
+# Cloudflare Pages headers. HTML must always revalidate so design changes show up straight away;
+# CSS/JS use ?v= version bumps, so Cloudflare's default caching is fine for them.
+/
+  Cache-Control: no-cache, must-revalidate
+/index
+  Cache-Control: no-cache, must-revalidate
+/about
+  Cache-Control: no-cache, must-revalidate
+/people-employment
+  Cache-Control: no-cache, must-revalidate
+/food-safety
+  Cache-Control: no-cache, must-revalidate
+/business-planning
+  Cache-Control: no-cache, must-revalidate
+/customer-experience
+  Cache-Control: no-cache, must-revalidate
+/how-we-work
+  Cache-Control: no-cache, must-revalidate
+/contact
+  Cache-Control: no-cache, must-revalidate
+/404
+  Cache-Control: no-cache, must-revalidate
+/*.html
+  Cache-Control: no-cache, must-revalidate

@@ -71,7 +71,7 @@ h1{font-size:clamp(2.8rem,6.6vw,5.6rem)}h2{font-size:clamp(2rem,4.4vw,3.6rem)}h3
 .cta-txt h2{max-width:520px}.cta-txt p{max-width:440px}.cta-txt .eyebrow{background:var(--bg)}
 /* service pages */
 .sits{list-style:none;padding:0;margin:36px 0 0;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.sits li{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:2px solid var(--ink);border-radius:20px;padding:22px 24px;transition:transform .2s,box-shadow .2s}.sits li:hover{transform:translate(-3px,-3px);box-shadow:var(--sh)}
+.sits{align-items:start}.sits li{background:var(--card);border:2px solid var(--ink);border-radius:20px;transition:transform .2s,box-shadow .2s}@media(hover:hover){.sits li:hover{transform:translate(-3px,-3px);box-shadow:var(--sh)}}
 .sits li p{margin:0;font-weight:500}.chk{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--lime);border:2px solid var(--ink);font-weight:800;font-size:15px;line-height:1}
 .green{background:var(--ink);color:var(--bg)}.green h2{color:var(--bg)}.green .lead{color:#d8d8d8}.green .eyebrow{background:transparent;color:var(--bg);border-color:var(--bg)}
 .split2{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:start}
@@ -205,3 +205,22 @@ html.lang-th .scard-body p,html.lang-th .bec-m{line-height:1.7}
 .form .chk-row{display:flex;gap:10px;align-items:center;font-weight:700}.form .chk-row input{width:20px;height:20px;accent-color:#121212}
 .form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .form .note.ok{border-left-color:var(--lime);background:#C6F4322e;padding:10px 14px;border-radius:10px}
+
+/* expandable 'When you might need us' cards (details/summary: native tap + keyboard) */
+.sits-hint{margin:14px 0 0;font-size:.95rem;color:var(--muted)}
+.sit summary{display:block;list-style:none;cursor:pointer;padding:22px 24px;border-radius:18px;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+.sit summary::-webkit-details-marker{display:none}.sit summary::marker{content:''}
+.sit summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.sit-row{display:flex;gap:16px;align-items:flex-start}.sit-q{flex:1;font-weight:500;padding-top:3px}
+.sit-ic{flex:none;position:relative;width:30px;height:30px;border-radius:50%;border:2px solid var(--ink);background:var(--bg);transition:transform .25s,background .2s}
+.sit-ic::before,.sit-ic::after{content:'';position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;background:var(--ink);border-radius:2px}.sit-ic::after{transform:rotate(90deg)}
+.sit[open] .sit-ic{transform:rotate(45deg);background:var(--lime)}.sit summary:hover .sit-ic{background:var(--lime)}
+.sits li .sit-a{margin:0;padding:0 24px 22px 70px;font-weight:400;color:var(--muted);line-height:1.6}
+.sit[open]{animation:sitIn .25s ease}@keyframes sitIn{from{opacity:.6}to{opacity:1}}
+@media(max-width:620px){.sits li .sit-a{padding:0 20px 20px 20px}.sit summary{padding:20px}}
+/* food safety legal section */
+.legal{list-style:none;padding:0;margin:30px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.legal li{background:var(--card);border:2px solid var(--ink);border-radius:20px;padding:22px 24px;box-shadow:var(--sh)}.legal h3{margin:0 0 8px;font-size:1.15rem}.legal p{margin:0;color:var(--muted)}
+.legal-help{margin:24px 0 0;padding:18px 22px;border:2px solid var(--ink);border-radius:20px;background:var(--lime);max-width:900px}
+@media(max-width:900px){.legal{grid-template-columns:1fr}}
+.hero-txt .value{font-weight:700;font-size:1.08rem;margin:16px 0 0;max-width:560px}
