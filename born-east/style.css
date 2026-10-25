@@ -298,3 +298,11 @@ html.lang-th .scard-body p,html.lang-th .bec-m{line-height:1.7}
 .privacy h2{font-size:1.5rem;margin:34px 0 8px}
 @media(max-width:900px){.legal.grid4,.founder{grid-template-columns:1fr}.founder-photo{max-width:320px}}
 @media(max-width:620px){.legal{grid-template-columns:1fr}}
+/* brief-p1 hero: one column, headline full width, text + buttons below (the old 2-col grid stacked both .lead paragraphs in one cell) */
+@media(min-width:901px){.hero-txt{display:block;max-width:1100px}
+.hero-txt>.lead{margin:0 0 .8em;max-width:720px}
+.hero-txt>h1{margin-bottom:28px}
+.hero-txt>.ctas{margin-top:26px}}
+.hero:not(.sub) .hero-txt h1{font-size:clamp(2.9rem,6.2vw,5.6rem);line-height:1.02}
+html.lang-th .hero:not(.sub) .hero-txt h1{font-size:clamp(2.3rem,4.8vw,4.4rem);line-height:1.25}
+@media(max-width:600px){.hero:not(.sub) .hero-txt h1{font-size:clamp(2.1rem,9.6vw,2.7rem)}html.lang-th .hero:not(.sub) .hero-txt h1{font-size:clamp(1.8rem,8vw,2.2rem)}}
