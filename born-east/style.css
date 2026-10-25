@@ -284,3 +284,17 @@ html.lang-th .scard-body p,html.lang-th .bec-m{line-height:1.7}
  .eyebrow{width:fit-content;max-width:100%;box-sizing:border-box}
  .who-txt,.cta-txt,.hero-txt,.who>*,.cta>*{min-width:0}
 }
+
+/* brief-p1 */
+.legal.grid4{grid-template-columns:repeat(2,1fr)}
+.cta-p{max-width:620px;margin:0 0 22px;font-size:1.1rem}
+.founder{display:grid;grid-template-columns:320px 1fr;gap:50px;align-items:start}
+.founder-photo{aspect-ratio:4/5;border:2px dashed var(--ink);border-radius:var(--r);background:var(--card);display:grid;place-items:center;padding:24px;text-align:center;font-weight:700;color:var(--muted)}
+.fd-list{padding-left:20px}.fd-list li{margin:6px 0}
+.ph{background:#fff3b0;outline:1px dashed #b59a00;border-radius:4px;padding:0 4px}
+.form .f-req,.form .f-hint{margin:0;font-size:14px;color:var(--muted)}.form .f-hint a,.privacy a{text-decoration:underline}
+.form .note.err{border-left-color:#c0392b;background:#c0392b14;padding:10px 14px;border-radius:10px;color:#121212}
+.form [aria-invalid="true"]{border-color:#c0392b!important;outline:2px solid #c0392b33}
+.privacy h2{font-size:1.5rem;margin:34px 0 8px}
+@media(max-width:900px){.legal.grid4,.founder{grid-template-columns:1fr}.founder-photo{max-width:320px}}
+@media(max-width:620px){.legal{grid-template-columns:1fr}}
