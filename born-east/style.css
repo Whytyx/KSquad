@@ -312,3 +312,4 @@ html.lang-th .hero:not(.sub) .hero-txt h1{font-size:clamp(2.3rem,4.8vw,4.4rem);l
 @media(max-width:900px){.lang button{min-height:44px;min-width:44px}.nav>a,.ddb,.ddm a{min-height:44px;display:flex;align-items:center}.ddb{justify-content:space-between}}
 footer.ftr{padding-bottom:108px}
 @media(max-width:900px){.nav .dd .ddm a{min-height:44px;display:flex;align-items:center;box-sizing:border-box}.logo{min-height:44px;display:inline-flex;align-items:center}}
+@media(max-width:900px){.ftr .ftr-g a:not(.brand){min-height:44px;display:flex;align-items:center;padding:0}.brand{min-height:44px;justify-content:center}.side li a{display:inline-flex;align-items:center;min-height:44px}}
