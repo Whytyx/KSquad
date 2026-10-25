@@ -306,3 +306,8 @@ html.lang-th .scard-body p,html.lang-th .bec-m{line-height:1.7}
 .hero:not(.sub) .hero-txt h1{font-size:clamp(2.9rem,6.2vw,5.6rem);line-height:1.02}
 html.lang-th .hero:not(.sub) .hero-txt h1{font-size:clamp(2.3rem,4.8vw,4.4rem);line-height:1.25}
 @media(max-width:600px){.hero:not(.sub) .hero-txt h1{font-size:clamp(2.1rem,9.6vw,2.7rem)}html.lang-th .hero:not(.sub) .hero-txt h1{font-size:clamp(1.8rem,8vw,2.2rem)}}
+/* QA fixes */
+.nav>a,.ddb,.hdr .pill,.ddm a{white-space:nowrap}
+@media(min-width:901px) and (max-width:1180px){.nav{gap:2px}.nav>a,.ddb{padding:7px 9px;font-size:14px}.hdr .pill{padding:10px 14px;font-size:14px;gap:6px}.hdr-in{gap:12px}}
+@media(max-width:900px){.lang button{min-height:44px;min-width:44px}.nav>a,.ddb,.ddm a{min-height:44px;display:flex;align-items:center}.ddb{justify-content:space-between}}
+footer.ftr{padding-bottom:108px}
