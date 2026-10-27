@@ -1,40 +1,52 @@
-/* Born East contact form -> Worker /lead (same endpoint as the chat). No keys here: this file is public. */
+/* Born East contact form -> Worker POST /contact (Worker sends via Web3Forms). No keys here: this file is public. */
 (function(){
   var form = document.getElementById('lead-form'); if (!form) return;
   var EP = (window.BORN_EAST_CHAT_ENDPOINT || '').replace(/\/+$/, '');
   var note = document.getElementById('fnote');
   var EN = {
-    thanks_this_form_isn_t: 'Thanks — this form isn’t connected yet, so your enquiry has not been sent.',
+    form_not_live: 'Preview: the enquiry service is not switched on yet, so messages cannot be sent from this page.',
     form_sending: 'Sending…',
-    form_ok_hot: 'Thanks! The owner will contact you today.',
-    form_ok_warm: 'Thanks! The owner will contact you within 2-3 days.',
-    form_invalid: 'Please check your name and email address.',
-    form_fail: 'Sorry, we couldn’t send your enquiry right now, so nothing was sent. Please try again later.'
+    form_ok: 'Thank you. We’ve received your enquiry and will be in touch to discuss next steps.',
+    form_missing: 'Please complete the required fields: ',
+    form_bad_email: 'Please check your email address.',
+    form_rate: 'Too many attempts. Please wait a minute and try again.',
+    form_fail: 'Sorry, we couldn’t send your enquiry right now, so nothing was sent. Please try again later.',
+    fl_name: 'Name', fl_business: 'Business name', fl_email: 'Email address', fl_service: 'Type of support', fl_msg: 'Description', fl_phone: 'Phone number'
   };
-  // Fresh element per status so the TH/EN switcher always translates the current message.
-  function status(key, cls){ var old = document.getElementById('fmsg'), p = document.createElement('p');
-    p.id = 'fmsg'; p.className = 'note' + (cls ? ' ' + cls : ''); p.setAttribute('aria-live', 'polite'); p.setAttribute('data-i18n', key); p.innerHTML = EN[key];
-    old.parentNode.replaceChild(p, old); if (window.BE_I18N) window.BE_I18N.apply(p.parentNode); }
-  function post(body){ return fetch(EP + '/lead', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)})
-    .then(function(r){ return r.json().catch(function(){ return {}; }); }); }
-  function notConfigured(){ note.hidden = false; }
-  if (!EP) notConfigured();
-  else post({probe: true}).then(function(j){ if (j && j.reason === 'not_configured') notConfigured(); }).catch(function(){});
+  function T(k){ return window.BE_I18N ? window.BE_I18N.t(k, EN[k]) : EN[k]; }
+  var cur = null;
+  function status(key, cls, fields){ cur = [key, cls, fields]; var p = document.getElementById('fmsg');
+    p.hidden = false; p.className = 'note' + (cls ? ' ' + cls : ''); p.setAttribute('role', cls === 'err' ? 'alert' : 'status');
+    p.textContent = T(key) + (fields ? fields.map(function(f){ return T('fl_' + f); }).join(', ') + '.' : ''); }
+  document.addEventListener('be:lang', function(){ if (cur) status(cur[0], cur[1], cur[2]); });
+  function mark(fields){ ['name','business','email','phone','service','msg'].forEach(function(n){ var el = form.elements[n]; if (el) el.removeAttribute('aria-invalid'); });
+    (fields || []).forEach(function(n){ var el = form.elements[n]; if (el) el.setAttribute('aria-invalid', 'true'); });
+    if (fields && fields.length && form.elements[fields[0]]) form.elements[fields[0]].focus(); }
+  function check(){ var f = form.elements, bad = [];
+    ['name','business','email','service','msg'].forEach(function(n){ if (!f[n].value.trim()) bad.push(n); });
+    return bad; }
+  if (!EP) note.hidden = false;
   form.addEventListener('submit', function(e){
-    e.preventDefault(); if (!form.reportValidity()) return;
-    var f = form.elements, btn = form.querySelector('button[type=submit]'), lang = (window.BE_I18N && window.BE_I18N.lang()) === 'th' ? 'th' : 'en';
-    var type = f.start.checked ? 'hot' : 'warm';
-    if (!EP) { status('thanks_this_form_isn_t'); return; }
-    btn.disabled = true; status('form_sending');
-    post({ type: type, name: f.name.value, business: f.business.value, email: f.email.value, phone: '', service: f.service.value,
-           lang: lang, note: f.msg.value, messages: [], website: f.website.value, source: 'contact-form' })
+    e.preventDefault();
+    var bad = check(); if (bad.length) { mark(bad); status('form_missing', 'err', bad); return; }
+    var f = form.elements;
+    if (!f.email.checkValidity()) { mark(['email']); status('form_bad_email', 'err'); return; }
+    mark([]);
+    if (!EP) { status('form_not_live', 'err'); return; }
+    var btn = form.querySelector('button[type=submit]'); btn.disabled = true; status('form_sending');
+    fetch(EP + '/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
+      name: f.name.value, business: f.business.value, email: f.email.value, phone: f.phone.value, service: f.service.value,
+      message: f.msg.value, website: f.website.value, lang: (window.BE_I18N && window.BE_I18N.lang()) === 'th' ? 'th' : 'en' }) })
+      .then(function(r){ return r.json().catch(function(){ return { _status: r.status }; }).then(function(j){ j._status = r.status; return j; }); })
       .then(function(j){
-        if (j && j.ok === true) { status(type === 'hot' ? 'form_ok_hot' : 'form_ok_warm', 'ok'); form.reset(); }
-        else if (j && j.reason === 'not_configured') { notConfigured(); status('thanks_this_form_isn_t'); }
-        else if (j && j.reason === 'invalid') status('form_invalid');
-        else status('form_fail');
+        if (j.ok === true) { status('form_ok', 'ok'); form.reset(); }
+        else if (j.reason === 'invalid' && j.fields) { mark(j.fields); var only = j.fields.filter(function(x){ return x !== 'email' && x !== 'phone'; });
+          status(only.length ? 'form_missing' : 'form_bad_email', 'err', only.length ? only : null); }
+        else if (j.reason === 'rate_limited') status('form_rate', 'err');
+        else if (j.reason === 'not_configured' || j._status === 404 || j._status === 403) { note.hidden = false; status('form_not_live', 'err'); }
+        else status('form_fail', 'err');
       })
-      .catch(function(){ status('form_fail'); })
+      .catch(function(){ status('form_fail', 'err'); })
       .then(function(){ btn.disabled = false; });
   });
 })();
