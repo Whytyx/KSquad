@@ -50,3 +50,8 @@
       .then(function(){ btn.disabled = false; });
   });
 })();
+/* Free 20-min call: contact.html?call=1&service=people preselects support type and shows a note. */
+(function(){ try{ var q=new URLSearchParams(location.search), f=document.getElementById('lead-form'); if(!f) return;
+  var s=q.get('service'); if(s&&f.elements.service.querySelector('option[value="'+s+'"]')) f.elements.service.value=s;
+  if(q.get('call')==='1'){ var n=document.getElementById('callnote'); if(n) n.hidden=false; if(!s) f.elements.service.value='general';
+    var m=f.elements.msg; if(!m.value) m.value=(document.documentElement.lang==='th'?'ขอนัดปรึกษาฟรี 20 นาที เรื่อง: ':'I’d like a free 20-minute call about: '); } }catch(e){} })();
