@@ -334,3 +334,20 @@ footer.ftr{padding-bottom:108px}
 .fsteps li::before{content:counter(st,decimal-leading-zero);position:absolute;left:0;top:4px;width:38px;height:38px;border-radius:50%;border:2px solid var(--ink);background:var(--lime);display:grid;place-items:center;font-weight:800;font-size:14px}
 @media(min-width:700px){.pcards{grid-template-columns:repeat(2,1fr)}.ba,.fix-g{grid-template-columns:1fr 1fr}.pcta{flex-direction:row;align-items:center;justify-content:space-between}}
 @media(min-width:1100px){.pcards{grid-template-columns:repeat(3,1fr)}}
+/* pillars (home) + problem quotes (service pages) */
+.pillars-sec{padding-top:56px}
+.pillars{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:20px}
+.pillar{display:flex;flex-direction:column;gap:12px;background:var(--card);border:2px solid var(--ink);border-radius:var(--r);box-shadow:var(--sh);padding:26px 24px}
+.pl-num{align-self:flex-start;width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);background:var(--lime);display:grid;place-items:center;font-weight:800;font-size:14px}
+.pillar h3{margin:4px 0 0;font-size:clamp(1.45rem,2.2vw,1.8rem)}
+.pillar p{margin:0;font-size:16px;line-height:1.55;color:#262626;flex:1}
+.pl-links{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.pl-link{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:8px 16px;border:2px solid var(--ink);border-radius:999px;color:var(--ink);text-decoration:none;font-weight:700;font-size:15px;background:var(--bg);transition:background .2s,transform .2s}
+.pl-link svg{flex:0 0 18px;width:18px;height:18px}
+.pl-link:hover,.pl-link:focus-visible{background:var(--lime);transform:translateX(3px)}
+.pquotes{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:1fr;gap:16px}
+.pquotes li{background:var(--card);border:2px solid var(--ink);border-radius:20px;padding:22px 24px;box-shadow:var(--sh)}
+.sf-sec{padding-bottom:0}
+html.lang-th .pillar p{line-height:1.7}
+@media(min-width:700px){.pquotes{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.pillars{grid-template-columns:repeat(3,1fr)}}
