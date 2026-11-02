@@ -50,8 +50,18 @@
       .then(function(){ btn.disabled = false; });
   });
 })();
-/* Free 20-min call: contact.html?call=1&service=people preselects support type and shows a note. */
+/* Free 20-min call: contact.html?call=1 shows the Cal.com inline booking calendar (official embed, no keys)
+   above the enquiry form. ?service=people etc. still preselects the support type in the form below.
+   Cal.com is only loaded on ?call=1, so the plain contact page makes no third-party requests. */
 (function(){ try{ var q=new URLSearchParams(location.search), f=document.getElementById('lead-form'); if(!f) return;
   var s=q.get('service'); if(s&&f.elements.service.querySelector('option[value="'+s+'"]')) f.elements.service.value=s;
-  if(q.get('call')==='1'){ var n=document.getElementById('callnote'); if(n) n.hidden=false; if(!s) f.elements.service.value='general';
-    var m=f.elements.msg; if(!m.value) m.value=(document.documentElement.lang==='th'?'ขอนัดปรึกษาฟรี 20 นาที เรื่อง: ':'I’d like a free 20-minute call about: '); } }catch(e){} })();
+  if(q.get('call')!=='1') return;
+  var n=document.getElementById('callnote'); if(n) n.hidden=false;
+  var box=document.getElementById('bk-cal'); if(!box) return;
+  (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  var NS='be-call', LINK='pitchaporn-ty-kitiyanuphap-h8aaqa/free-20-minute-call';
+  Cal('init', NS, { origin: 'https://app.cal.com' });
+  Cal.ns[NS]('inline', { elementOrSelector: '#bk-cal', calLink: LINK, layout: 'month_view', config: { layout: 'month_view', theme: 'light' } });
+  Cal.ns[NS]('ui', { theme: 'light', hideEventTypeDetails: false, layout: 'month_view', cssVarsPerTheme: { light: { 'cal-brand': '#121212' } } });
+  Cal.ns[NS]('on', { action: 'linkReady', callback: function(){ var l=document.getElementById('bk-load'); if(l) l.hidden=true; box.classList.add('ready'); } });
+}catch(e){} })();

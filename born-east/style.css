@@ -354,3 +354,28 @@ html.lang-th .pillar p{line-height:1.7}
 
 /* home pillars intro */
 .pl-intro{margin:14px 0 0;max-width:640px}
+
+/* Free 20-minute call: Cal.com inline booking (contact.html?call=1) */
+.bk-cta[hidden],.bk-sec[hidden]{display:none}
+.bk-sec{padding:20px 0 70px}
+/* on ?call=1 the calendar is the page: drop the enquiry-led hero so booking sits at the top */
+.is-call .hero.sub{display:none}.is-call .bk-sec{padding-top:56px}
+.bk-head{max-width:760px;margin-bottom:24px}.bk-head h2{font-size:clamp(2rem,4.4vw,3.4rem)}.bk-head .lead{margin:0}
+.bk-cal{background:var(--card);border:2px solid var(--ink);border-radius:var(--r);box-shadow:var(--sh);padding:10px;min-height:560px;width:100%;max-width:100%;box-sizing:border-box;overflow:hidden}
+.bk-cal iframe{width:100%!important;max-width:100%;min-width:0!important;border:0;display:block}
+.bk-load{margin:0;padding:40px 20px;text-align:center;color:var(--muted)}
+.bk-cal.ready{min-height:0}
+.bk-alt{margin:16px 0 0;font-size:14.5px;color:var(--muted)}.bk-alt a{text-decoration:underline;font-weight:700;color:var(--ink)}
+.is-call .bk-sec+script+.sec{padding-top:30px}
+.f-alt{margin:0;padding:14px 16px;border-left:4px solid var(--lime);background:#C6F43222;border-radius:10px}.f-alt strong{display:block;font-size:1.1rem}
+.bk-cta{margin-top:22px}.bk-cta .btn{padding:12px 20px;font-size:15px}
+@media(max-width:620px){.bk-sec{padding:4px 0 44px}.is-call .bk-sec{padding-top:30px}.bk-sec .wrap{padding:0 12px}.bk-cal{padding:4px;border-radius:18px;box-shadow:3px 3px 0 var(--ink);min-height:640px}}
+
+/* chat button on phones: compact icon-only circle, (footer already reserves room at the page end) */
+@media(max-width:620px){
+ .bec{right:12px;bottom:12px}
+ .bec-fab{width:54px;height:54px;padding:0;justify-content:center;gap:0;border-radius:50%;box-shadow:3px 3px 0 var(--ink)}
+ .bec-fab span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+ .bec-fab svg{width:24px;height:24px}
+ .form{padding:22px 18px}
+}
