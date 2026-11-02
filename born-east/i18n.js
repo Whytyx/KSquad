@@ -83,7 +83,7 @@ var TH = {
  "bk_h": "จองคุย<span class=\"u\">ฟรี 20 นาที</span>",
  "bk_p": "เลือกเวลาที่คุณสะดวกได้เลย เวลาที่แสดงเป็นเวลาท้องถิ่นของคุณ",
  "bk_loading": "กำลังโหลดปฏิทินนัดหมาย…",
- "bk_alt": "ปฏิทินไม่ขึ้น? <a href=\"https://cal.com/pitchaporn-ty-kitiyanuphap-h8aaqa/free-20-minute-call\" target=\"_blank\" rel=\"noopener\">เปิดหน้าจองโดยตรง</a>",
+ "bk_alt": "ปฏิทินไม่ขึ้น? <a href=\"https://cal.com/borneastsolutions/free-20-minute-call\" target=\"_blank\" rel=\"noopener\">เปิดหน้าจองโดยตรง</a>",
  "bk_write": "สะดวกพิมพ์ข้อความหาเรามากกว่า?",
  "bk_write_p": "ส่งข้อความสั้น ๆ มาได้เลย แล้วเราจะตอบกลับทางอีเมล",
  "call_note": "<strong>ปรึกษาฟรี 20 นาที:</strong> เล่าสั้น ๆ ว่าเกิดอะไรขึ้น แล้วเราจะติดต่อกลับเพื่อนัดเวลา",
