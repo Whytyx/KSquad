@@ -35,6 +35,11 @@
     <xhtml:link rel="alternate" hreflang="th" href="https://borneastsolutions.com/how-we-work?lang=th"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://borneastsolutions.com/how-we-work"/>
   </url>
+  <url><loc>https://borneastsolutions.com/pricing</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://borneastsolutions.com/pricing"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://borneastsolutions.com/pricing?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://borneastsolutions.com/pricing"/>
+  </url>
   <url><loc>https://borneastsolutions.com/contact</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://borneastsolutions.com/contact"/>
     <xhtml:link rel="alternate" hreflang="th" href="https://borneastsolutions.com/contact?lang=th"/>
