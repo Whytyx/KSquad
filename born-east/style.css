@@ -351,3 +351,6 @@ footer.ftr{padding-bottom:108px}
 html.lang-th .pillar p{line-height:1.7}
 @media(min-width:700px){.pquotes{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:900px){.pillars{grid-template-columns:repeat(3,1fr)}}
+
+/* home pillars intro */
+.pl-intro{margin:14px 0 0;max-width:640px}
