@@ -62,6 +62,6 @@
   var NS='be-call', LINK='borneastsolutions/free-20-minute-call';
   Cal('init', NS, { origin: 'https://app.cal.com' });
   Cal.ns[NS]('inline', { elementOrSelector: '#bk-cal', calLink: LINK, layout: 'month_view', config: { layout: 'month_view', theme: 'light' } });
-  Cal.ns[NS]('ui', { theme: 'light', hideEventTypeDetails: false, layout: 'month_view', cssVarsPerTheme: { light: { 'cal-brand': '#121212' } } });
+  Cal.ns[NS]('ui', { theme: 'light', hideEventTypeDetails: false, layout: 'month_view', cssVarsPerTheme: { light: { 'cal-brand': '#0F1D17' } } });
   Cal.ns[NS]('on', { action: 'linkReady', callback: function(){ var l=document.getElementById('bk-load'); if(l) l.hidden=true; box.classList.add('ready'); } });
 }catch(e){} })();
