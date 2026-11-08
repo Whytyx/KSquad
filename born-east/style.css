@@ -717,3 +717,14 @@ html.lang-th .hero.sub .hero-txt h1{font-size:clamp(1.65rem,3vw,2.5rem)}
 .cta .eyebrow{background:transparent!important;color:#F6F1E7!important;border-color:#F6F1E7!important;margin-top:6px}
 .cta .pill.light{background:var(--lime)!important;color:var(--ink)!important;border-color:var(--lime)!important}
 .cta h2{margin-top:18px}
+/* About v65: founder photo hero */
+.ab-hero{padding:48px 0 56px!important}
+.ab-hero .hero-txt .big-note{margin-top:18px;display:inline-block}
+.ab-ph{position:relative;max-width:420px!important}
+.ab-ph img,.hero.sub.has-ph .ab-ph img{aspect-ratio:800/1197!important;max-height:none!important;object-fit:cover;object-position:center top}
+.ab-ph figcaption{position:absolute;left:14px;right:14px;bottom:14px;background:var(--ink);color:#F6F1E7;border-radius:12px;padding:10px 14px;display:flex;flex-direction:column;gap:2px;font-size:.9rem;border-left:4px solid var(--lime)}
+.ab-ph figcaption strong{font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem}
+.ab-intro{padding-top:8px}
+.ab-intro p:first-child{font-size:1.15rem;font-weight:500}
+.founder-sec .fs-head h2{margin-top:14px}
+@media(max-width:900px){.ab-hero .hero-g{gap:28px!important}.ab-ph{width:100%!important;max-width:440px!important;justify-self:center!important}}
