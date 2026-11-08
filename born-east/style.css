@@ -701,5 +701,7 @@ html.lang-th .hero.sub .hero-txt h1{font-size:clamp(1.65rem,3vw,2.5rem)}
 .tl-dot{top:4px}
 @media(max-width:760px){.tl::before{left:-11px;transform:none}}
 
-.hero.sub:has(+ .sec.legal){padding-bottom:0}
-.sec.legal{padding-top:24px}
+.hero.sub:has(+ .sec.legal){padding-bottom:0!important;min-height:0!important}
+.hero.sub:has(+ .sec.legal) .hero-txt,.hero.sub:has(+ .sec.legal) h1{margin-bottom:0!important;min-height:0!important}
+.sec.legal{padding-top:20px!important}
+.sec.legal>.wrap>h2:first-child{margin-top:0}
