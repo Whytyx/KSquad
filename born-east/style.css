@@ -728,3 +728,10 @@ html.lang-th .hero.sub .hero-txt h1{font-size:clamp(1.65rem,3vw,2.5rem)}
 .ab-name span{color:var(--muted,#555);font-size:.95rem}
 .ab-body p{text-wrap:pretty}.ab-body .btn{margin-top:8px}
 @media(min-width:900px){.ab-intro{grid-template-columns:minmax(0,4fr) minmax(0,6fr);gap:64px;align-items:center}.ab-fig{max-width:420px;margin:0}}
+/* v67: consistent vertical rhythm */
+html body main>.sec{padding-top:48px!important;padding-bottom:48px!important;margin-top:0!important}
+html body main>.hero.sub{padding-bottom:0!important}
+main>.hero.sub .hero-txt>:last-child{margin-bottom:0!important}
+html body main>.hero.sub+.sec.sec,html body main>.hero.sub+.bk-sec+script+.sec.sec{padding-top:28px!important}
+main>.hero.sub+section>.wrap>:first-child,main>.hero.sub+section>.wrap>:first-child>:first-child{margin-top:0!important}
+@media(min-width:900px){html body main>.sec{padding-top:64px!important;padding-bottom:64px!important}html body main>.hero.sub+.sec.sec,html body main>.hero.sub+.bk-sec+script+.sec.sec{padding-top:44px!important}}
