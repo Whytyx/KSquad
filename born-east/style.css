@@ -825,3 +825,8 @@ h1,h2,h3{color:var(--ink)}
 /* free 20-minute call: hidden for now (2026-11-08), kept in code. Delete this rule to bring it back. */
 .call-btn,.bk-cta,.bk-sec{display:none!important}
 img{filter:none!important}
+/* 2026-11-08: keep faces in frame; single step numbers */
+.scard-img img,.pl-ph img,.who-ph img,.hero-ph img,.cta-img img{object-position:center 18%}
+.fsteps .nb{display:none!important}
+.fsteps li{display:flex;align-items:center;padding:10px 0 10px 56px}
+.fsteps li::before{content:counter(st);top:50%;transform:translateY(-50%);background:var(--lime)!important;color:var(--wine)!important;border-color:var(--lime)!important;font-style:normal}
