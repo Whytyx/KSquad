@@ -694,3 +694,9 @@ html.lang-th .hero.sub .hero-txt h1{font-size:clamp(1.65rem,3vw,2.5rem)}
 .fs-close{background:var(--ink);color:#fff;border-radius:var(--r);padding:28px 32px;text-align:center;max-width:760px;margin:0 auto}
 .fs-close p{margin:0;line-height:1.7}
 @media(max-width:760px){.tl::before{left:11px}.tl-i,.tl-i:nth-child(even){width:auto;margin-left:0;padding:0 0 28px 44px;text-align:left}.tl-dot,.tl-i:nth-child(even) .tl-dot{left:0;right:auto}}
+.tl::before{border-left:0;width:44px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='160' viewBox='0 0 44 160'%3E%3Cpath d='M22 0 C42 40 42 40 22 80 C2 120 2 120 22 160' fill='none' stroke='%23C6F432' stroke-width='3' stroke-dasharray='7 7' stroke-linecap='round'/%3E%3C/svg%3E") repeat-y center top}
+.tl-c p,.fs-close p,.fn-lead,.prose p{text-wrap:pretty}
+.tl-c h3,.fs-quote,h1,h2{text-wrap:balance}
+.tl-c{max-width:400px}.tl-i:nth-child(odd) .tl-c{margin-left:auto}
+.tl-dot{top:4px}
+@media(max-width:760px){.tl::before{left:-11px;transform:none}}
