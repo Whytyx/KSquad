@@ -506,7 +506,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--sage);outline-of
 .ftr h4{color:var(--sage);font-family:'Jost','Noto Sans Thai',sans-serif;font-weight:500;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase}
 html.lang-th .ftr h4{letter-spacing:.02em;font-size:14px}
 .ftr a:not(.brand):hover{color:var(--bg);transform:none;text-decoration:underline;text-underline-offset:4px}
-.ftr-b{border-top:1px solid rgba(183,154,112,.22);color:#AEBBB2}
+.ftr-b{border-top:1px solid rgba(183,154,112,.22);color:#CDBFAE}
 /* pricing */
 .pr-blk{border-top:1px solid var(--line)}
 .pr-lab{color:var(--muted);font-weight:500;letter-spacing:.18em;font-size:12px}
