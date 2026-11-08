@@ -629,3 +629,19 @@ img{filter:none!important}
 
 /* classic palette restored (2026-11-08) */
 :root{--bg:#F6F5F0;--ink:#121212;--muted:#4a4a4a;--lime:#C6F432;--card:#fff;--line:#121212;--r:26px;--sh:5px 5px 0 var(--ink);--sage:#121212;--sage-t:#EEF7D0;--stone:#E8E6DE;--stone-t:#EFEEE8;--ink2:#1e1e1e;--wine:#121212;--line2:#121212}
+/* hero photo beside text */
+.hero.has-ph .hero-g{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:64px;align-items:center}
+.hero.has-ph .hero-txt{display:block;max-width:none}.hero.has-ph .hero-txt>*{grid-column:auto;grid-row:auto}
+.hero-ph{margin:0;justify-self:end;width:100%;max-width:460px}
+.hero-ph img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border:2px solid var(--ink);border-radius:var(--r);box-shadow:var(--sh)}
+.hero.sub.has-ph .hero-ph img{aspect-ratio:1/1}
+@media(max-width:900px){.hero.has-ph .hero-g{grid-template-columns:1fr;gap:32px}.hero-ph{justify-self:start;max-width:520px}}
+/* smaller headings (2026-11-08) */
+h2{font-size:clamp(1.7rem,3.4vw,2.7rem)}
+.hero-txt h1,.hero:not(.sub) .hero-txt h1,.hero.has-ph .hero-txt h1{font-size:clamp(2.3rem,4.6vw,4rem)}
+.hero.sub .hero-txt h1,.hero.has-ph.sub .hero-txt h1{font-size:clamp(2.1rem,4.2vw,3.5rem)}
+html.lang-th .hero-txt h1,html.lang-th .hero:not(.sub) .hero-txt h1{font-size:clamp(2rem,3.8vw,3.3rem)}
+html.lang-th .hero.sub .hero-txt h1{font-size:clamp(1.8rem,3.4vw,2.9rem)}
+.who h2.big{font-size:clamp(2rem,4.2vw,3.4rem)}.cta-txt h2{font-size:clamp(1.9rem,3.8vw,3rem)}
+.scard-body h3{font-size:clamp(1.5rem,2.4vw,1.95rem)}
+@media(max-width:600px){h1,.hero-txt h1,.hero:not(.sub) .hero-txt h1{font-size:clamp(1.9rem,8.4vw,2.3rem)}.hero.sub .hero-txt h1{font-size:clamp(1.7rem,7.4vw,2.1rem)}h2{font-size:clamp(1.5rem,6.4vw,1.8rem)}.who h2.big,.cta-txt h2{font-size:clamp(1.7rem,7.4vw,2.1rem)}html.lang-th .hero-txt h1,html.lang-th h1{font-size:clamp(1.6rem,7vw,1.95rem)}}
