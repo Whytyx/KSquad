@@ -728,3 +728,5 @@ html.lang-th .hero.sub .hero-txt h1{font-size:clamp(1.65rem,3vw,2.5rem)}
 .ab-intro p:first-child{font-size:1.15rem;font-weight:500}
 .founder-sec .fs-head h2{margin-top:14px}
 @media(max-width:900px){.ab-hero .hero-g{gap:28px!important}.ab-ph{width:100%!important;max-width:440px!important;justify-self:center!important}}
+.ab-hero .hero-txt .big-note{max-width:100%;white-space:normal;font-size:clamp(.95rem,4.2vw,1.2rem)}
+@media(max-width:900px){.ab-hero{padding:36px 0 20px!important}.ab-hero+.sec{padding-top:28px!important}}
