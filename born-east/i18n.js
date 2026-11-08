@@ -336,7 +336,7 @@ var TH = {
  "people_process_progress": "บุคลากร · ระบบงาน · การเติบโต",
  "services_2": "บริการ",
  "company": "บริษัท",
- "2026_born_east_solutions_contact": "© 2026 Born East Solutions ช่องทางติดต่อจะแจ้งให้ทราบเร็ว ๆ นี้",
+ "2026_born_east_solutions_contact": "© 2026 Born East Solutions <a href="mailto:hello@borneastsolutions.com">hello@borneastsolutions.com</a>",
  "business_planning_born_east_solutions": "การวางแผนธุรกิจ (Business Planning) | Born East Solutions",
  "good_ideas_need_a_clear": "ไอเดียดี ๆ ต้องมีแผนที่ชัดเจน",
  "it_can_be_hard_to": "เมื่อต้องวุ่นอยู่กับการดูแลธุรกิจทุกวัน การหาเวลามาวางแผนอาจไม่ใช่เรื่องง่าย เราทำงานร่วมกับเจ้าของธุรกิจอิสระเพื่อรวบรวมไอเดีย จัดลำดับความสำคัญ และกำหนดทิศทางที่ชัดเจนขึ้น",
