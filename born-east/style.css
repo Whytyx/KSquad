@@ -647,3 +647,4 @@ html.lang-th .hero.sub .hero-txt h1{font-size:clamp(1.8rem,3.4vw,2.9rem)}
 @media(max-width:600px){h1,.hero-txt h1,.hero:not(.sub) .hero-txt h1{font-size:clamp(1.9rem,8.4vw,2.3rem)}.hero.sub .hero-txt h1{font-size:clamp(1.7rem,7.4vw,2.1rem)}h2{font-size:clamp(1.5rem,6.4vw,1.8rem)}.who h2.big,.cta-txt h2{font-size:clamp(1.7rem,7.4vw,2.1rem)}html.lang-th .hero-txt h1,html.lang-th h1{font-size:clamp(1.6rem,7vw,1.95rem)}}
 .hero-ph img{height:auto;max-height:520px}.hero.sub .hero-ph img{aspect-ratio:1/1!important;max-height:420px}
 .pillar{overflow:hidden}.pl-ph{margin:-2px -2px 18px;height:220px;overflow:hidden;border-bottom:2px solid var(--ink)}.pl-ph img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.brand-logo img{display:block;width:auto;height:56px}.ftr .brand-logo img{height:60px}@media(max-width:600px){.hdr .brand-logo img{height:44px}}
