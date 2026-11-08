@@ -658,4 +658,19 @@ html.lang-th .hero.sub .hero-txt h1{font-size:clamp(1.65rem,3vw,2.5rem)}
 .scard-body h3{font-size:clamp(1.35rem,2.1vw,1.7rem)}
 @media(max-width:600px){h1,.hero-txt h1,.hero:not(.sub) .hero-txt h1{font-size:clamp(1.75rem,7.6vw,2.1rem)}.hero.sub .hero-txt h1{font-size:clamp(1.6rem,6.8vw,1.9rem)}h2{font-size:clamp(1.4rem,5.8vw,1.65rem)}.who h2.big,.cta-txt h2{font-size:clamp(1.55rem,6.6vw,1.9rem)}html.lang-th .hero-txt h1,html.lang-th h1{font-size:clamp(1.5rem,6.4vw,1.8rem)}}
 
-.founder-img{width:100%;height:auto;border-radius:var(--r);object-fit:cover;aspect-ratio:3/4}
+.fn{display:grid;grid-template-columns:380px 1fr;gap:64px;align-items:start}
+.fn-media{position:sticky;top:110px}
+.fn-frame{position:relative}
+.fn-frame::before{content:"";position:absolute;inset:18px -18px -18px 18px;background:var(--lime,#C6F432);border-radius:var(--r);z-index:0}
+.founder-img{position:relative;z-index:1;display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r);border:2px solid var(--ink)}
+.fn-tag{position:relative;z-index:2;margin:-34px 0 0 22px;display:inline-flex;flex-direction:column;background:var(--ink);color:#fff;padding:12px 18px;border-radius:14px}
+.fn-tag strong{font-family:"Bricolage Grotesque",sans-serif;font-size:1.25rem}
+.fn-tag span{font-size:.85rem;opacity:.8}
+.fn-quote{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.15;margin:18px 0 18px;padding-left:18px;border-left:6px solid var(--lime,#C6F432)}
+.fn-lead{font-size:1.12rem;line-height:1.65}
+.fn-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:26px 0}
+.fn-cols p{margin:0;background:var(--card,#fff);border:1.5px solid var(--ink);border-radius:16px;padding:18px 20px;line-height:1.6}
+.fn-close{background:var(--ink);color:#fff;border-radius:var(--r);padding:26px 28px}
+.fn-close p{margin:0;line-height:1.65}
+.fn-sign{margin-top:14px!important;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.4rem;color:var(--lime,#C6F432)}
+@media(max-width:900px){.fn{grid-template-columns:1fr;gap:40px}.fn-media{position:static;max-width:340px}.fn-cols{grid-template-columns:1fr}}
