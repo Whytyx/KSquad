@@ -711,3 +711,4 @@ html.lang-th .hero.sub .hero-txt h1{font-size:clamp(1.65rem,3vw,2.5rem)}
 .hero.sub:not(.has-ph) .hero-txt,.hero.sub:not(.has-ph) h1{margin-bottom:0!important;min-height:0!important}
 .hero.sub:not(.has-ph)+.sec{padding-top:24px!important}
 .hero.sub:not(.has-ph)+.sec .big-note{margin-top:0}
+footer.ftr{background:#26262a;border-top:4px solid var(--lime)!important;margin-top:24px}
