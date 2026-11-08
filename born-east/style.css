@@ -727,4 +727,4 @@ html.lang-th .hero.sub .hero-txt h1{font-size:clamp(1.65rem,3vw,2.5rem)}
 .ab-name strong{font-family:"Bricolage Grotesque",sans-serif;font-size:1.5rem;line-height:1.1}
 .ab-name span{color:var(--muted,#555);font-size:.95rem}
 .ab-body p{text-wrap:pretty}.ab-body .btn{margin-top:8px}
-@media(min-width:900px){.ab-intro{grid-template-columns:minmax(0,4fr) minmax(0,6fr);gap:64px;align-items:center}.ab-fig{max-width:none}}
+@media(min-width:900px){.ab-intro{grid-template-columns:minmax(0,4fr) minmax(0,6fr);gap:64px;align-items:center}.ab-fig{max-width:420px;margin:0}}
