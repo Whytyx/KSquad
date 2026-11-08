@@ -831,3 +831,4 @@ img{filter:none!important}
 .fsteps li{display:flex;align-items:center;padding:10px 0 10px 56px}
 .fsteps li::before{content:counter(st);top:50%;transform:translateY(-50%);background:var(--lime)!important;color:var(--wine)!important;border-color:var(--lime)!important;font-style:normal}
 .brand-logo img{display:block;height:44px;width:auto}.ftr .brand-logo img{height:52px}@media(max-width:600px){.hdr .brand-logo img{height:36px}}
+.hdr .brand-logo img{height:58px}@media(max-width:600px){.hdr .brand-logo img{height:46px}}
