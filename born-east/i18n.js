@@ -222,7 +222,7 @@ var TH = {
  "ct_email": "อีเมล: <a href=\"mailto:hello@borneastsolutions.com\">hello@borneastsolutions.com</a>",
  "ct_priv": "วิธีที่เราดูแลข้อมูลของคุณ: <a href=\"privacy.html\">ประกาศความเป็นส่วนตัว</a>",
  "pv_who_h": "เราคือใคร",
- "pv_who_p": "Born East Solutions เป็นผู้รับผิดชอบข้อมูลส่วนบุคคลที่คุณส่งให้เราผ่านเว็บไซต์นี้ ติดต่อ: <a href=\"mailto:hello@borneastsolutions.com\">hello@borneastsolutions.com</a> Kevalin Kitiyanuphap ดำเนินธุรกิจในชื่อ Born East Solutions <span class=\"ph\">[รอข้อมูล: ที่อยู่ และเลขทะเบียน ICO หากมี]</span>",
+ "pv_who_p": "Born East Solutions เป็นผู้รับผิดชอบข้อมูลส่วนบุคคลที่คุณส่งให้เราผ่านเว็บไซต์นี้ ติดต่อ: <a href=\"mailto:hello@borneastsolutions.com\">hello@borneastsolutions.com</a> Kevalin Kitiyanuphap ดำเนินธุรกิจในชื่อ Born East Solutions",
  "pv_what_h": "ข้อมูลที่เราเก็บ",
  "pv_what_p": "เมื่อคุณใช้แบบฟอร์มติดต่อ: ชื่อ ชื่อธุรกิจ อีเมล เบอร์โทรศัพท์ (หากคุณให้มา) ประเภทความช่วยเหลือที่ต้องการ และข้อความของคุณ หากคุณใช้แชทบนเว็บไซต์ เราจะได้รับข้อความที่คุณพิมพ์",
  "pv_why_h": "เราใช้ข้อมูลเพื่ออะไร",
