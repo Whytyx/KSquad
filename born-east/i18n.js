@@ -3,6 +3,11 @@
    data-i18n-attr="attr:key;attr2:key2". Thai text lives in TH below; edit it there. */
 (function(){
 var TH = {
+ "fn_s1": "จุดเริ่มต้น",
+ "fn_s2": "สิ่งที่อยากทำ",
+ "fn_s3": "ประสบการณ์",
+ "fn_s4": "Born East ทำอะไร",
+ "fn_s5": "วิธีทำงาน",
  "fd_eyebrow": "สารจากผู้ก่อตั้ง",
  "fd_name": "Gayle",
  "fd_title": "ผู้ก่อตั้งและที่ปรึกษาธุรกิจ",
