@@ -711,6 +711,9 @@ html.lang-th .hero.sub .hero-txt h1{font-size:clamp(1.65rem,3vw,2.5rem)}
 .hero.sub:not(.has-ph) .hero-txt,.hero.sub:not(.has-ph) h1{margin-bottom:0!important;min-height:0!important}
 .hero.sub:not(.has-ph)+.sec{padding-top:24px!important}
 .hero.sub:not(.has-ph)+.sec .big-note{margin-top:0}
-.cta .stk.cta-note{background:var(--ink)!important;color:var(--lime)!important;border-color:var(--ink)!important;box-shadow:none!important}
-.cta .eyebrow{background:#fff!important;border-color:var(--ink)!important;margin-top:6px}
+.cta .cta-txt{background:var(--ink)!important;color:#F6F1E7!important}
+.cta .cta-txt h2,.cta .cta-txt .cta-p{color:#F6F1E7!important}
+.cta .stk.cta-note{background:var(--lime)!important;color:var(--ink)!important}
+.cta .eyebrow{background:transparent!important;color:#F6F1E7!important;border-color:#F6F1E7!important;margin-top:6px}
+.cta .pill.light{background:var(--lime)!important;color:var(--ink)!important;border-color:var(--lime)!important}
 .cta h2{margin-top:18px}
