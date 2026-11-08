@@ -700,3 +700,6 @@ html.lang-th .hero.sub .hero-txt h1{font-size:clamp(1.65rem,3vw,2.5rem)}
 .tl-c{max-width:400px}.tl-i:nth-child(odd) .tl-c{margin-left:auto}
 .tl-dot{top:4px}
 @media(max-width:760px){.tl::before{left:-11px;transform:none}}
+
+.hero.sub:has(+ .sec.legal){padding-bottom:0}
+.sec.legal{padding-top:24px}
