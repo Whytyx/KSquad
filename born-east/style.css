@@ -674,3 +674,5 @@ html.lang-th .hero.sub .hero-txt h1{font-size:clamp(1.65rem,3vw,2.5rem)}
 .fn-close p{margin:0;line-height:1.65}
 .fn-sign{margin-top:14px!important;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.4rem;color:var(--lime,#C6F432)}
 @media(max-width:900px){.fn{grid-template-columns:1fr;gap:40px}.fn-media{position:static;max-width:340px}.fn-cols{grid-template-columns:1fr}}
+
+.nw{white-space:nowrap}
