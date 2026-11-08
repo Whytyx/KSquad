@@ -648,3 +648,12 @@ html.lang-th .hero.sub .hero-txt h1{font-size:clamp(1.8rem,3.4vw,2.9rem)}
 .hero-ph img{height:auto;max-height:520px}.hero.sub .hero-ph img{aspect-ratio:1/1!important;max-height:420px}
 .pillar{overflow:hidden}.pl-ph{margin:-2px -2px 18px;height:220px;overflow:hidden;border-bottom:2px solid var(--ink)}.pl-ph img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
 .brand-logo img{display:block;width:auto;height:56px}.ftr .brand-logo img{height:60px}@media(max-width:600px){.hdr .brand-logo img{height:44px}}
+/* headings a bit smaller again (2026-11-08) */
+h2{font-size:clamp(1.55rem,3vw,2.35rem)}
+.hero-txt h1,.hero:not(.sub) .hero-txt h1,.hero.has-ph .hero-txt h1{font-size:clamp(2.1rem,4vw,3.4rem)}
+.hero.sub .hero-txt h1,.hero.has-ph.sub .hero-txt h1{font-size:clamp(1.9rem,3.6vw,3rem)}
+html.lang-th .hero-txt h1,html.lang-th .hero:not(.sub) .hero-txt h1{font-size:clamp(1.8rem,3.3vw,2.8rem)}
+html.lang-th .hero.sub .hero-txt h1{font-size:clamp(1.65rem,3vw,2.5rem)}
+.who h2.big{font-size:clamp(1.8rem,3.6vw,2.9rem)}.cta-txt h2{font-size:clamp(1.7rem,3.3vw,2.6rem)}
+.scard-body h3{font-size:clamp(1.35rem,2.1vw,1.7rem)}
+@media(max-width:600px){h1,.hero-txt h1,.hero:not(.sub) .hero-txt h1{font-size:clamp(1.75rem,7.6vw,2.1rem)}.hero.sub .hero-txt h1{font-size:clamp(1.6rem,6.8vw,1.9rem)}h2{font-size:clamp(1.4rem,5.8vw,1.65rem)}.who h2.big,.cta-txt h2{font-size:clamp(1.55rem,6.6vw,1.9rem)}html.lang-th .hero-txt h1,html.lang-th h1{font-size:clamp(1.5rem,6.4vw,1.8rem)}}
