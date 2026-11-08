@@ -822,3 +822,6 @@ h1,h2,h3{color:var(--ink)}
 .lang button:hover,.bec-lang button:hover{background:#B79A7033}
 /* mobile: Services dropdown closed until tapped */
 @media (max-width:900px){.dd:not(.show) .ddm{display:none!important}.dd.show .ddm{display:block!important}}
+/* free 20-minute call: hidden for now (2026-11-08), kept in code. Delete this rule to bring it back. */
+.call-btn,.bk-cta,.bk-sec{display:none!important}
+img{filter:none!important}
