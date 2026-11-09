@@ -754,3 +754,5 @@ html body main:has(>.hero:not(.sub))>.sec+.sec{padding-top:36px!important}
 html body main:has(>.hero:not(.sub))>.sec.how{padding-bottom:28px!important}
 html body main>.sec.how+.cta{margin-top:16px!important}
 @media(min-width:900px){html body main:has(>.hero:not(.sub))>.sec+.sec{padding-top:48px!important}}
+/* v71: call-only .ctas wrappers take zero space (button stays in HTML) */
+.ctas:has(>.call-btn):not(:has(>:not(.call-btn))){display:none!important;margin:0!important;padding:0!important;height:0!important;min-height:0!important;gap:0!important}
