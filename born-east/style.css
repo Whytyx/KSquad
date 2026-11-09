@@ -741,11 +741,15 @@ html body main>.hero.sub:has(.ctas){padding-bottom:28px!important}
 html body main>.hero:not(.sub){padding-bottom:28px!important}
 html body main>.hero:not(.sub) .hero-txt>:last-child{margin-bottom:0!important}
 html body main>.hero:not(.sub)+.sec{padding-top:28px!important}
+/* v70: tighter homepage hero→services gap (~28 mobile / ~40 desktop) */
+html body main>.hero:not(.sub){padding-bottom:0!important}
+html body main>.hero:not(.sub)+.sec{padding-top:28px!important}
+@media(min-width:900px){html body main>.hero:not(.sub)+.sec{padding-top:40px!important}}
 html body main>.pillars-sec+.marquee{margin-block:0!important}
 html body main>.marquee+.who{padding-block:24px!important}
 html body main>.who+.sec{padding-top:36px!important}
 html body main>.sec.how+.cta{margin-top:24px!important;margin-bottom:56px!important}
-@media(min-width:900px){html body main>.hero:not(.sub)+.sec{padding-top:44px!important}html body main>.who+.sec{padding-top:48px!important}}
+@media(min-width:900px){html body main>.hero:not(.sub)+.sec{padding-top:40px!important}html body main>.who+.sec{padding-top:48px!important}}
 html body main:has(>.hero:not(.sub))>.sec+.sec{padding-top:36px!important}
 html body main:has(>.hero:not(.sub))>.sec.how{padding-bottom:28px!important}
 html body main>.sec.how+.cta{margin-top:16px!important}
