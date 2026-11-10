@@ -767,3 +767,6 @@ html body main>.sec.how+.cta{margin-top:16px!important}
 @media(max-width:900px){.cta{margin-bottom:32px!important}}
 main>.sec.green:last-child{margin-bottom:36px!important;border-radius:var(--r)!important;overflow:hidden}
 main>.cta:last-child{margin-bottom:36px!important}
+
+/* v74: keep About H1 lime phrase on one line */
+.ab-hero .hero-txt h1 .u{white-space:nowrap}
