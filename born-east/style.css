@@ -809,3 +809,9 @@ html.lang-th .ab-hero.hero.sub .hero-txt h1{font-size:clamp(1.2rem,6vw,2.5rem);l
   .pr-cover{grid-template-columns:repeat(2,minmax(0,1fr))}
   .pr-block{padding:34px 32px}
 }
+
+/* v77: Remote HR Advisor upsell note */
+.pr-price .pr-dot{color:var(--muted);font-weight:700}
+.pr-upsell{margin:14px 0 0;padding:12px 14px;background:var(--card);border:2px solid #12121222;border-radius:14px;font-size:15px;line-height:1.5}
+.pr-upsell a{font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.pr-upsell a:hover{background:var(--lime)}
