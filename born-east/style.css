@@ -815,3 +815,6 @@ html.lang-th .ab-hero.hero.sub .hero-txt h1{font-size:clamp(1.2rem,6vw,2.5rem);l
 .pr-upsell{margin:14px 0 0;padding:12px 14px;background:var(--card);border:2px solid #12121222;border-radius:14px;font-size:15px;line-height:1.5}
 .pr-upsell a{font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .pr-upsell a:hover{background:var(--lime)}
+.pr-ask{margin:16px 0 0;padding-top:14px;border-top:2px solid #12121222}
+.pr-ask p{margin:0 0 12px;font-size:15px;line-height:1.5;color:#262626}
+.pr-ask .pill{padding:10px 18px;font-size:14.5px}
