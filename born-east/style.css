@@ -818,3 +818,18 @@ html.lang-th .ab-hero.hero.sub .hero-txt h1{font-size:clamp(1.2rem,6vw,2.5rem);l
 .pr-ask{margin:16px 0 0;padding-top:14px;border-top:2px solid #12121222}
 .pr-ask p{margin:0 0 12px;font-size:15px;line-height:1.5;color:#262626}
 .pr-ask .pill{padding:10px 18px;font-size:14.5px}
+/* copy update 21 Nov 2026 */
+.lead-multi p{margin:0 0 .75em}.lead-multi p:last-child{margin-bottom:0}
+@media(min-width:1000px){.pillars.p3{grid-template-columns:repeat(3,1fr)}}
+.who-txt p+p{margin-top:14px}.who .who-strong{color:var(--lime);font-weight:700;font-size:1.15rem}
+.cta-fine{margin:22px 0 0;font-size:13px;line-height:1.55;color:#cfcfcf;max-width:620px}
+.cta .cta-txt .cta-p+.cta-p{margin-top:-8px}
+.model .m-q{font-weight:700;color:var(--ink);margin:0 0 8px!important}
+.model:nth-child(3) .m-q{color:var(--lime)!important}
+.sec>.wrap>h2+.models,.sec>.wrap>h2+ul.legal{margin-top:26px}
+.conf{max-width:820px}.conf .lead{margin:0 0 18px}
+.conf-big{font-family:'Bricolage Grotesque','Noto Sans Thai',sans-serif;font-weight:700;font-size:clamp(1.25rem,2.2vw,1.6rem);line-height:1.35;margin:0 0 6px}
+.story .legal-help{margin-top:22px}
+.fsteps.st2 li{align-items:flex-start}.fsteps.st2 li::before{top:22px}
+.fsteps.st2 .st-txt{display:flex;flex-direction:column;gap:2px}.fsteps.st2 strong{font-size:1.1rem}.fsteps.st2 .st-txt>span{color:#d8d8d8}
+.green .split2 .lead+.lead{margin-top:-6px}
